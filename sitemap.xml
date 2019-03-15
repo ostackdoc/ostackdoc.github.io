@@ -16,6 +16,11 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>https://ostackdoc.github.io/prepare-the-target-hosts/</loc>
+     <lastmod>2019-03-15</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>https://ostackdoc.github.io/test-env-example/</loc>
      <lastmod>2019-03-15</lastmod>
      <changefreq>daily</changefreq>

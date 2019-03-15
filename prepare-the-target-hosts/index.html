@@ -13,7 +13,7 @@
         <meta name="description" content="Guide for openstack-ansible Deployers">
       
       
-        <link rel="canonical" href="https://ostackdoc.github.io/configure-node-network/">
+        <link rel="canonical" href="https://ostackdoc.github.io/prepare-the-target-hosts/">
       
       
         <meta name="author" content="Chinthaka Deshapriya">
@@ -42,7 +42,7 @@
     
     
       
-        <title>Configuring Node Network - Openstack Deployment Guide</title>
+        <title>Prepare the Target Hosts - Openstack Deployment Guide</title>
       
     
     
@@ -137,10 +137,6 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#switch_port_configuration" tabindex="1" class="md-skip">
-        Skip to content
-      </a>
-    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -162,7 +158,7 @@
               Openstack Deployment Guide
             </span>
             <span class="md-header-nav__topic">
-              Configuring Node Network
+              Prepare the Target Hosts
             </span>
           
         </div>
@@ -281,11 +277,18 @@
       
       
 
+  
 
-  <li class="md-nav__item">
-    <a href="../prepare-the-target-hosts/" title="Prepare the Target Hosts" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+    <a href="./" title="Prepare the Target Hosts" class="md-nav__link md-nav__link--active">
       Prepare the Target Hosts
     </a>
+    
   </li>
 
     
@@ -305,12 +308,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
     
     <label class="md-nav__link" for="nav-6">
       Preparing OpenStack Nodes
@@ -338,52 +339,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Configuring Node Network
-      </label>
-    
-    <a href="./" title="Configuring Node Network" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../configure-node-network/" title="Configuring Node Network" class="md-nav__link">
       Configuring Node Network
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#switch_port_configuration" title="Switch Port Configuration" class="md-nav__link">
-    Switch Port Configuration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#network_cidrvlan_assignments" title="Network CIDR/VLAN assignments" class="md-nav__link">
-    Network CIDR/VLAN assignments
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -399,65 +359,17 @@
               </div>
             
             
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#switch_port_configuration" title="Switch Port Configuration" class="md-nav__link">
-    Switch Port Configuration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#network_cidrvlan_assignments" title="Network CIDR/VLAN assignments" class="md-nav__link">
-    Network CIDR/VLAN assignments
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/ostackdoc/ostackdoc-docs/edit/master/docs/configure-node-network.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/ostackdoc/ostackdoc-docs/edit/master/docs/prepare-the-target-hosts.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>Configuring Node Network</h1>
+                  <h1>Prepare the Target Hosts</h1>
                 
-                <p>This section covers all the steps that are required for configuring the network interfaces,bonding, VLAN, and DNS of your nodes</p>
-<h3 id="switch_port_configuration">Switch Port Configuration<a class="headerlink" href="#switch_port_configuration" title="Permanent link">&para;</a></h3>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The following example provides a good reference for switch configuration and cabinet layout. This example may be more than what is required for basic setups however it can be adjusted to just about any configuration. Additionally you will need to adjust the VLANS noted within this example to match your environment.</p>
-</div>
-<p><img alt="" src="../img/switch-port-config.jpg" /></p>
-<h3 id="network_cidrvlan_assignments">Network CIDR/VLAN assignments<a class="headerlink" href="#network_cidrvlan_assignments" title="Permanent link">&para;</a></h3>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The VLAN IDs shown in the above figure  are  for the purpose of example only. You should change them to represent your requirements.</p>
-</div>
-<p>The following CIDR and VLAN assignments are used for this environment.</p>
+                <p>In this section we will be learning how to prepare the hosts that are going to be used in OpenStack software deployment. </p>
                 
                   
                 
@@ -478,7 +390,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../install-node-os/" title="Installing Node OS" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../prepare-deployment-host/" title="Prepare Deployment Host" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -487,11 +399,25 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Installing Node OS
+                Prepare Deployment Host
               </span>
             </div>
           </a>
         
+        
+          <a href="../test-env-example/" title="Test Environment Example" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Test Environment Example
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
         
       </nav>
     </div>
