@@ -333,6 +333,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#storage_and_disk_recommendations" title="Storage and Disk Recommendations" class="md-nav__link">
+    Storage and Disk Recommendations
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deployment_hosts" title="Deployment hosts" class="md-nav__link">
+    Deployment hosts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compute_hosts" title="Compute hosts" class="md-nav__link">
+    Compute hosts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -456,6 +483,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#storage_and_disk_recommendations" title="Storage and Disk Recommendations" class="md-nav__link">
+    Storage and Disk Recommendations
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deployment_hosts" title="Deployment hosts" class="md-nav__link">
+    Deployment hosts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compute_hosts" title="Compute hosts" class="md-nav__link">
+    Compute hosts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -541,6 +595,20 @@
 <p>Infrastructure (control plane) hosts should have multicore processors for best performance. Some services, such as MySQL, benefit from additional CPU cores and other technologies, such as <a href="https://en.wikipedia.org/wiki/Hyper-threading">Hyper-threading</a>.</p>
 </li>
 </ul>
+<h4 id="storage_and_disk_recommendations">Storage and Disk Recommendations<a class="headerlink" href="#storage_and_disk_recommendations" title="Permanent link">&para;</a></h4>
+<p>Different hosts have different disk space requirements based on the services running on each host:</p>
+<h5 id="deployment_hosts">Deployment hosts<a class="headerlink" href="#deployment_hosts" title="Permanent link">&para;</a></h5>
+<p>A minimum of <strong>10 GB</strong> of disk space is sufficient for holding the OpenStack-Ansible repository content and additional required software.</p>
+<h5 id="compute_hosts">Compute hosts<a class="headerlink" href="#compute_hosts" title="Permanent link">&para;</a></h5>
+<p>Disk space requirements depend on the total number of instances running on each host and the amount of disk space allocated to each instance.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Consider disks that provide higher I/O throughput with lower latency, such as SSD drives in a RAID array if you use the local storage of the compute host for instance storage. </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If your deployment include a shared storage like Ceph you will  definitely be  using it in the compute host without using the local storage  of the compute host for instance storage. In this case the local disk of the compute host required for host OS installation and relevant OpenStack agent installation requirements.</p>
+</div>
                 
                   
                 
