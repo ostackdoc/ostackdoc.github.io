@@ -311,6 +311,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#installation-requirements-and-recommendations" title="Installation Requirements and Recommendations" class="md-nav__link">
+    Installation Requirements and Recommendations
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#software-requirements" title="Software Requirements" class="md-nav__link">
+    Software Requirements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
       
       
       
@@ -407,6 +427,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#installation-requirements-and-recommendations" title="Installation Requirements and Recommendations" class="md-nav__link">
+    Installation Requirements and Recommendations
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#software-requirements" title="Software Requirements" class="md-nav__link">
+    Software Requirements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
       
       
       
@@ -436,6 +476,38 @@
 <h2 id="installation-workflow">Installation Workflow<a class="headerlink" href="#installation-workflow" title="Permanent link">&para;</a></h2>
 <p>The following diagram shows the general workflow of an OpenStack-Ansible installation. This may slightly change as per the specific deployment scenario.</p>
 <p><img alt="" src="../img/deployment-work-flow.jpg" /></p>
+<h2 id="installation-requirements-and-recommendations">Installation Requirements and Recommendations<a class="headerlink" href="#installation-requirements-and-recommendations" title="Permanent link">&para;</a></h2>
+<h3 id="software-requirements">Software Requirements<a class="headerlink" href="#software-requirements" title="Permanent link">&para;</a></h3>
+<p>Ensure that all hosts within an OpenStack-Ansible (OSA) environment meet the following minimum requirements:</p>
+<ul>
+<li>Ubuntu</li>
+<li>Ubuntu 16.04 LTS (Xenial Xerus) or Ubuntu 18.04 LTS (Bionic Beaver)</li>
+<li>
+<p>Linux kernel version 3.13.0-34-generic or later is required.</p>
+</li>
+<li>
+<p>CentOS</p>
+</li>
+<li>Centos 7, fully updated.</li>
+<li>
+<p>Linux kernel version 3.10.0 or later.</p>
+</li>
+<li>
+<p>openSUSE</p>
+</li>
+<li>Leap 42.X, fully updated.</li>
+<li>
+<p>Linux kernel version 4.4.X or later.</p>
+</li>
+<li>
+<p>Secure Shell (SSH) client and server that support public key authentication</p>
+</li>
+<li>Network Time Protocol (NTP) client for time synchronization (such as ntpd or chronyd)</li>
+<li>Python 2.7.<em>x</em></li>
+<li>en_US.UTF-8 as the locale</li>
+</ul>
+<p>!!! Note:
+    At the moment of writing this guid, the openstacl-ansible playbook deployment on CentOS 7.x and openSUSE Leap 42.x is "experimental". We highly recomend using Ubuntu in your production deployment. </p>
                 
                   
                 
