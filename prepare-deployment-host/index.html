@@ -137,6 +137,10 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
+      <a href="#configuring_the_operating_system" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -273,9 +277,69 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Prepare Deployment Host
+      </label>
+    
     <a href="./" title="Prepare Deployment Host" class="md-nav__link md-nav__link--active">
       Prepare Deployment Host
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configuring_the_operating_system" title="Configuring the Operating System" class="md-nav__link">
+    Configuring the Operating System
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install_the_operating_system" title="Install the Operating System" class="md-nav__link">
+    Install the Operating System
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alternative_ubuntu_server_installer" title="Alternative Ubuntu Server installer" class="md-nav__link">
+    Alternative Ubuntu Server installer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure_the_network_interfaces" title="Configure The Network  Interfaces." class="md-nav__link">
+    Configure The Network  Interfaces.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -359,6 +423,68 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configuring_the_operating_system" title="Configuring the Operating System" class="md-nav__link">
+    Configuring the Operating System
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install_the_operating_system" title="Install the Operating System" class="md-nav__link">
+    Install the Operating System
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alternative_ubuntu_server_installer" title="Alternative Ubuntu Server installer" class="md-nav__link">
+    Alternative Ubuntu Server installer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure_the_network_interfaces" title="Configure The Network  Interfaces." class="md-nav__link">
+    Configure The Network  Interfaces.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
@@ -378,6 +504,23 @@
 <p>In a test environment, we recommend using one of the infrastructure target hosts as the deployment host.</p>
 </div>
 <p>To use a target host as a deployment host, follow the steps in <a href="/prepare-the-target-hosts/">Prepare the target hosts</a> on the deployment host.</p>
+<h2 id="configuring_the_operating_system">Configuring the Operating System<a class="headerlink" href="#configuring_the_operating_system" title="Permanent link">&para;</a></h2>
+<p>This section covers how to install and configure <strong>Ubuntu 18.04 LTS Serer</strong> in our OpenStack-Ansible host.</p>
+<h3 id="install_the_operating_system">Install the Operating System<a class="headerlink" href="#install_the_operating_system" title="Permanent link">&para;</a></h3>
+<p>If your have downloaded your Ubuntu server image download the installation ISO from alternate download section.</p>
+<h4 id="alternative_ubuntu_server_installer">Alternative Ubuntu Server installer<a class="headerlink" href="#alternative_ubuntu_server_installer" title="Permanent link">&para;</a></h4>
+<p>Since we  require advanced networking and storage features such as; LVM, RAID, multipath, vlans, bonds, or re-using existing partitions, you will want to continue to use the alternate installer.</p>
+<p><a href="http://cdimage.ubuntu.com/releases/18.04.2/release/ubuntu-18.04.2-server-amd64.iso">Download the alternate installer</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We do not cover on how to install the Ubuntu server here. We assume that you already know howto do it.</p>
+</div>
+<h4 id="configure_the_network_interfaces">Configure The Network  Interfaces.<a class="headerlink" href="#configure_the_network_interfaces" title="Permanent link">&para;</a></h4>
+<p>We assume that your OpenStack Ansible host has two network interface cards. We are planning our network like below</p>
+<p><strong>1.</strong> Configure one network card for accessing the Internet
+ Network:<code>192.168.10.0/24</code></p>
+<p><strong>2.</strong> Configure the other network card for accessing our OpenStack deployment management network.
+Network: <code>172.29.236.0/24</code></p>
                 
                   
                 
