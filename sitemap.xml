@@ -10,4 +10,14 @@
      <lastmod>2019-03-15</lastmod>
      <changefreq>daily</changefreq>
     </url>
+    <url>
+     <loc>https://ostackdoc.github.io/install-node-os/</loc>
+     <lastmod>2019-03-15</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://ostackdoc.github.io/configure-node-network/</loc>
+     <lastmod>2019-03-15</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
 </urlset>
