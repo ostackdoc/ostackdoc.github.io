@@ -518,7 +518,10 @@
 <h4 id="configure_the_network_interfaces">Configure The Network  Interfaces.<a class="headerlink" href="#configure_the_network_interfaces" title="Permanent link">&para;</a></h4>
 <p>We assume that your OpenStack Ansible host has two network interface cards. We are planning our network like below</p>
 <p><strong>1.</strong> Configure one network card for accessing the Internet</p>
-<p><code>Network: 192.168.10.0/24</code></p>
+<div class="codehilite"><pre><span></span>Network: 192.168.10.0/24
+</pre></div>
+
+
 <p><strong>2.</strong> Configure the other network card for accessing our OpenStack deployment management network.</p>
 <div class="codehilite"><pre><span></span>Network: 172.29.236.0/24
 </pre></div>
