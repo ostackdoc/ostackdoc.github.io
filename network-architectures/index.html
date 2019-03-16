@@ -300,6 +300,40 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#overlay_network" title="Overlay Network" class="md-nav__link">
+    Overlay Network
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage_network" title="Storage Network" class="md-nav__link">
+    Storage Network
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network_interfaces" title="Network Interfaces" class="md-nav__link">
+    Network Interfaces
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#single_interface_or_bond" title="Single Interface or Bond" class="md-nav__link">
+    Single Interface or Bond
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
       
       
       
@@ -420,6 +454,40 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#overlay_network" title="Overlay Network" class="md-nav__link">
+    Overlay Network
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage_network" title="Storage Network" class="md-nav__link">
+    Storage Network
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network_interfaces" title="Network Interfaces" class="md-nav__link">
+    Network Interfaces
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#single_interface_or_bond" title="Single Interface or Bond" class="md-nav__link">
+    Single Interface or Bond
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
       
       
       
@@ -472,10 +540,29 @@
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Unless, if we specifically do mention about a new network architecture  we will be referring to the same network architecture above through this document.</p>
+<p>Unless, if we specifically do mention about a new network architecture  we will be referring to the same network architecture above through out this document.</p>
 </div>
 <h3 id="management_network">Management Network<a class="headerlink" href="#management_network" title="Permanent link">&para;</a></h3>
 <p>The <code>Management Network</code>, also referred to as the <code>Container network</code>, provides management of and communication between the infrastructure and OpenStack services running in containers or on metal. The management network uses a dedicated <code>VLAN</code> typically connected to the <code>br-mgmt</code> bridge, and may also be used as the primary interface used to interact with the server via <code>SSH</code>.</p>
+<h3 id="overlay_network">Overlay Network<a class="headerlink" href="#overlay_network" title="Permanent link">&para;</a></h3>
+<p>The <code>Overlay Network</code>, also referred to as the <code>Tunnel Network</code>, provides connectivity between hosts for the purpose of <code>tunneling</code> encapsulated traffic using <code>VXLAN</code>, <code>GRE</code>, or other protocols. The <code>Overlay Network</code> uses a dedicated <code>VLAN</code> typically connected to the <code>br-vxlan</code> bridge.</p>
+<h3 id="storage_network">Storage Network<a class="headerlink" href="#storage_network" title="Permanent link">&para;</a></h3>
+<p>The <code>Storage Network</code> provides segregated access to Block Storage from OpenStack services such as <code>Cinder, Glance, Ceph</code>, etc.. The <code>Storage Network</code> uses a dedicated <code>VLAN</code> typically connected to the <code>br-storage</code> bridge.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code>CIDRs</code> and <code>VLANs</code> listed for each network are examples and may be different in your environment.</p>
+</div>
+<p>Additional <code>VLANs</code> may be required for the following purposes:</p>
+<ul>
+<li>External provider networks for <code>Floating IPs</code> and instances</li>
+<li>Self-service <code>Project/Tenant</code> networks for instances</li>
+<li>Other OpenStack services</li>
+</ul>
+<h3 id="network_interfaces">Network Interfaces<a class="headerlink" href="#network_interfaces" title="Permanent link">&para;</a></h3>
+<h4 id="single_interface_or_bond">Single Interface or Bond<a class="headerlink" href="#single_interface_or_bond" title="Permanent link">&para;</a></h4>
+<p>OpenStack-Ansible supports the use of a <code>single</code> interface or set of <code>bonded</code> interfaces that carry <code>traffic</code> for OpenStack services as well as instances.</p>
+<p>The following diagram demonstrates hosts using a single interface:</p>
+<p><img alt="" src="../img/single-interface.jpg" /></p>
                 
                   
                 
