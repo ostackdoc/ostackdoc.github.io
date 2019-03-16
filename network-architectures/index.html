@@ -344,8 +344,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#multiple_bond_sample_network_configuration" title="Multiple Bond Sample Network Configuration" class="md-nav__link">
-    Multiple Bond Sample Network Configuration
+  <a href="#multiples_bond_sample_network_configuration" title="Multiples Bond Sample Network Configuration" class="md-nav__link">
+    Multiples Bond Sample Network Configuration
   </a>
   
 </li>
@@ -519,8 +519,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#multiple_bond_sample_network_configuration" title="Multiple Bond Sample Network Configuration" class="md-nav__link">
-    Multiple Bond Sample Network Configuration
+  <a href="#multiples_bond_sample_network_configuration" title="Multiples Bond Sample Network Configuration" class="md-nav__link">
+    Multiples Bond Sample Network Configuration
   </a>
   
 </li>
@@ -618,7 +618,7 @@
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>This is a multi-NIC bonded configuration to implement the required bridges for OpenStack-Ansible. This illustrates the configuration of the first Infrastructure host <code>infra1</code> and the IP addresses assigned should be adapted for implementation on the other hosts.  After implementing this configuration, the host will need to be rebooted.</p>
-<p>Assuming that eth0/1 and eth2/3 are dual port NIC's we pair <code>eth0</code> with <code>eth2</code> for increased resiliency in the case of one interface card failing.</p>
+<p>Assuming that <code>eth0/1</code> and <code>eth2/3</code> are dual port NIC's we pair <code>eth0</code> with <code>eth2</code> for increased resiliency in the case of one interface card failing.</p>
 </div>
 <div class="codehilite"><pre><span></span>auto eth0
 
@@ -746,7 +746,7 @@ iface br-storage inet manual
 <p><img alt="" src="../img/multiple-interfaces.jpg" /></p>
 <p>The following diagram demonstrates hosts using multiple bonds:</p>
 <p><img alt="" src="../img/multiple-interfaces.jpg" /></p>
-<h4 id="multiple_bond_sample_network_configuration">Multiple Bond Sample Network Configuration<a class="headerlink" href="#multiple_bond_sample_network_configuration" title="Permanent link">&para;</a></h4>
+<h4 id="multiples_bond_sample_network_configuration">Multiples Bond Sample Network Configuration<a class="headerlink" href="#multiples_bond_sample_network_configuration" title="Permanent link">&para;</a></h4>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If your environment does not have <code>eth0</code>, but instead has <code>p1p1</code> or some other interface name, ensure that all references to eth0 in all configuration files are replaced with the appropriate name. The same applies to additional network interfaces.</p>
@@ -755,7 +755,7 @@ iface br-storage inet manual
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>This is a multi-NIC bonded configuration to implement the required bridges for OpenStack-Ansible. This illustrates the configuration of the first Infrastructure host <code>infra1</code> and the IP addresses assigned should be adapted for implementation on the other hosts.  After implementing this configuration, the host will need to be rebooted.</p>
-<p>Assuming that eth0/1 and eth2/3 are dual port NIC's we pair <code>eth0</code> with <code>eth2</code> for increased resiliency in the case of one interface card failing.</p>
+<p>Assuming that <code>eth0/1</code> and <code>eth2/3</code> are dual port NIC's we pair <code>eth0</code> with <code>eth2</code> for increased resiliency in the case of one interface card failing.</p>
 </div>
 <div class="codehilite"><pre><span></span>auto eth0
 iface eth0 inet manual
