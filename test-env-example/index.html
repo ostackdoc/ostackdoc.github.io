@@ -420,6 +420,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#storage1_host_networking" title="Storage1 Host Networking" class="md-nav__link">
+    Storage1 Host Networking
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -589,6 +596,13 @@
           <li class="md-nav__item">
   <a href="#compute1_host_networking" title="Compute1 Host Networking" class="md-nav__link">
     Compute1 Host Networking
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storage1_host_networking" title="Storage1 Host Networking" class="md-nav__link">
+    Storage1 Host Networking
   </a>
   
 </li>
@@ -926,6 +940,11 @@ iface br-storage inet static
 </pre></div>
 
 
+<p>Reboot the system</p>
+<div class="codehilite"><pre><span></span>sudo systemctl reboot
+</pre></div>
+
+
 <h4 id="compute1_host_networking">Compute1 Host Networking<a class="headerlink" href="#compute1_host_networking" title="Permanent link">&para;</a></h4>
 <p>According to above network architecture and design you can configure the network interfaces of Compute1 host as below.</p>
 <div class="codehilite"><pre><span></span>sudo nano /etc/network/interfaces
@@ -1031,6 +1050,69 @@ iface br-storage inet static
     bridge_ports eth0.20
     address 172.29.244.12
     netmask 255.255.252.0
+</pre></div>
+
+
+<p>Reboot the system</p>
+<div class="codehilite"><pre><span></span>sudo systemctl reboot
+</pre></div>
+
+
+<h4 id="storage1_host_networking">Storage1 Host Networking<a class="headerlink" href="#storage1_host_networking" title="Permanent link">&para;</a></h4>
+<p>According to above network architecture and design you can configure the network interfaces of Host1 host as below.</p>
+<div class="codehilite"><pre><span></span>sudo nano /etc/network/interfaces
+</pre></div>
+
+
+<p>Add the the following configurations.</p>
+<div class="codehilite"><pre><span></span># Physical interfaces
+auto eth0
+iface eth0 inet manual
+
+auto eth1
+iface eth1 inet manual
+
+# Container/Host management VLAN interface
+auto eth0.10
+iface eth0.10 inet manual
+    vlan-raw-device eth0
+
+# OpenStack Networking VXLAN (tunnel/overlay) VLAN interface
+auto eth1.30
+iface eth1.30 inet manual
+    vlan-raw-device eth1
+
+# Storage network VLAN interface (optional)
+auto eth0.20
+iface eth0.20 inet manual
+    vlan-raw-device eth0
+
+# Container/Host management bridge
+auto br-mgmt
+iface br-mgmt inet static
+    bridge_stp off
+    bridge_waitport 0
+    bridge_fd 0
+    bridge_ports eth0.10
+    address 172.29.236.13
+    netmask 255.255.252.0
+    gateway 172.29.236.1
+    dns-nameservers 8.8.8.8 8.8.4.4
+
+# Storage bridge
+auto br-storage
+iface br-storage inet static
+    bridge_stp off
+    bridge_waitport 0
+    bridge_fd 0
+    bridge_ports eth0.20
+    address 172.29.244.13
+    netmask 255.255.252.0
+</pre></div>
+
+
+<p>Reboot the system</p>
+<div class="codehilite"><pre><span></span>sudo systemctl reboot
 </pre></div>
                 
                   
