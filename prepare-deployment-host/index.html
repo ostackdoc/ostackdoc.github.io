@@ -321,6 +321,14 @@
     Configure The Network  Interfaces.
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changing_netplan_to_ifupdown" title="Changing netplan to ifupdown" class="md-nav__link">
+    Changing netplan to ifupdown
+  </a>
+  
 </li>
         
       </ul>
@@ -332,25 +340,9 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#etcnetplan_for_current_configuration" title="/etc/netplan for current configuration." class="md-nav__link">
-    /etc/netplan for current configuration.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#to_re-enable_ifupdown_on_this_system_you_can_run" title="To re-enable ifupdown on this system, you can run:" class="md-nav__link">
-    To re-enable ifupdown on this system, you can run:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sudo_apt_install_ifupdown" title="sudo apt install ifupdown" class="md-nav__link">
-    sudo apt install ifupdown
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -483,6 +475,14 @@
     Configure The Network  Interfaces.
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changing_netplan_to_ifupdown" title="Changing netplan to ifupdown" class="md-nav__link">
+    Changing netplan to ifupdown
+  </a>
+  
 </li>
         
       </ul>
@@ -494,25 +494,9 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#etcnetplan_for_current_configuration" title="/etc/netplan for current configuration." class="md-nav__link">
-    /etc/netplan for current configuration.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#to_re-enable_ifupdown_on_this_system_you_can_run" title="To re-enable ifupdown on this system, you can run:" class="md-nav__link">
-    To re-enable ifupdown on this system, you can run:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sudo_apt_install_ifupdown" title="sudo apt install ifupdown" class="md-nav__link">
-    sudo apt install ifupdown
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -569,6 +553,7 @@
 </pre></div>
 
 
+<h5 id="changing_netplan_to_ifupdown">Changing <code>netplan</code> to <code>ifupdown</code><a class="headerlink" href="#changing_netplan_to_ifupdown" title="Permanent link">&para;</a></h5>
 <p>The classic <code>ifupdown</code> network configuration used in Debian/Ubuntu  has been replaced by <code>netplan</code> on Ubuntu 18.04 server system.</p>
 <p>You can view the current <code>netplan</code> configuration using  the command below. You may have a different name for your <code>YML</code> as per your installation environment.</p>
 <div class="codehilite"><pre><span></span>cat /etc/netplan/01-netcfg.yaml
@@ -587,10 +572,9 @@ network:
 </pre></div>
 
 
-<h2 id="etcnetplan_for_current_configuration">/etc/netplan for current configuration.<a class="headerlink" href="#etcnetplan_for_current_configuration" title="Permanent link">&para;</a></h2>
-<h2 id="to_re-enable_ifupdown_on_this_system_you_can_run">To re-enable ifupdown on this system, you can run:<a class="headerlink" href="#to_re-enable_ifupdown_on_this_system_you_can_run" title="Permanent link">&para;</a></h2>
-<h2 id="sudo_apt_install_ifupdown">sudo apt install ifupdown<a class="headerlink" href="#sudo_apt_install_ifupdown" title="Permanent link">&para;</a></h2>
-<p>~                                                </p>
+<p>** To re-enable <code>ifupdown</code> on this system, run:</p>
+<div class="codehilite"><pre><span></span>sudo apt install ifupdown
+</pre></div>
                 
                   
                 
