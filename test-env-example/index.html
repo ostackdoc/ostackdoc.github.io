@@ -355,10 +355,9 @@
     Configuring the Operating System
   </a>
   
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#install_the_operating_system" title="Install the Operating System" class="md-nav__link">
     Install the Operating System
   </a>
@@ -374,11 +373,24 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#configure_ubuntu" title="Configure Ubuntu" class="md-nav__link">
+    Configure Ubuntu
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#configure_the_network_interfaces" title="Configure The Network  Interfaces." class="md-nav__link">
     Configure The Network  Interfaces.
   </a>
   
-</li>
+    <nav class="md-nav">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#changing_netplan_to_ifupdown" title="Changing netplan to ifupdown" class="md-nav__link">
@@ -394,28 +406,17 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
-  <a href="#network_interface_configuration" title="Network Interface Configuration" class="md-nav__link">
-    Network Interface Configuration
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#infra1_host" title="Infra1 Host" class="md-nav__link">
-    Infra1 Host
+  <a href="#infra1_host_networking" title="Infra1 Host Networking" class="md-nav__link">
+    Infra1 Host Networking
   </a>
   
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#compute1_host_networking" title="Compute1 Host Networking" class="md-nav__link">
+    Compute1 Host Networking
+  </a>
   
 </li>
         
@@ -527,10 +528,9 @@
     Configuring the Operating System
   </a>
   
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#install_the_operating_system" title="Install the Operating System" class="md-nav__link">
     Install the Operating System
   </a>
@@ -546,11 +546,24 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#configure_ubuntu" title="Configure Ubuntu" class="md-nav__link">
+    Configure Ubuntu
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#configure_the_network_interfaces" title="Configure The Network  Interfaces." class="md-nav__link">
     Configure The Network  Interfaces.
   </a>
   
-</li>
+    <nav class="md-nav">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#changing_netplan_to_ifupdown" title="Changing netplan to ifupdown" class="md-nav__link">
@@ -566,28 +579,17 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
-  <a href="#network_interface_configuration" title="Network Interface Configuration" class="md-nav__link">
-    Network Interface Configuration
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#infra1_host" title="Infra1 Host" class="md-nav__link">
-    Infra1 Host
+  <a href="#infra1_host_networking" title="Infra1 Host Networking" class="md-nav__link">
+    Infra1 Host Networking
   </a>
   
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#compute1_host_networking" title="Compute1 Host Networking" class="md-nav__link">
+    Compute1 Host Networking
+  </a>
   
 </li>
         
@@ -649,13 +651,13 @@
 </tr>
 <tr>
 <td>Tunnel (VXLAN) Network</td>
-<td>'172.29.240.0/22</td>
-<td>`   30</td>
+<td><code>172.29.240.0/22</code></td>
+<td><code>30</code></td>
 </tr>
 <tr>
 <td>Storage Network</td>
 <td><code>172.29.244.0/22</code></td>
-<td>20</td>
+<td><code>20</code></td>
 </tr>
 </tbody>
 </table>
@@ -679,20 +681,20 @@
 </tr>
 <tr>
 <td>compute1</td>
-<td><code>172.29.236.12'    |</code>172.29.240.12<code>|</code>172.29.244.12`</td>
-<td></td>
-<td></td>
+<td><code>172.29.236.12</code></td>
+<td><code>172.29.240.12</code></td>
+<td><code>172.29.244.12</code></td>
 </tr>
 <tr>
 <td>storage1</td>
 <td><code>172.29.236.13</code></td>
-<td></td>
+<td><code>-</code></td>
 <td><code>172.29.244.13</code></td>
 </tr>
 </tbody>
 </table>
-<h2 id="configuring_the_operating_system">Configuring the Operating System<a class="headerlink" href="#configuring_the_operating_system" title="Permanent link">&para;</a></h2>
-<p>This section covers how to install and configure <strong>Ubuntu 18.04 LTS Serer</strong> in our OpenStack-Ansible host.</p>
+<h3 id="configuring_the_operating_system">Configuring the Operating System<a class="headerlink" href="#configuring_the_operating_system" title="Permanent link">&para;</a></h3>
+<p>This section covers how to install and configure <strong>Ubuntu 18.04 LTS server</strong> in our OpenStack-Ansible host.</p>
 <h3 id="install_the_operating_system">Install the Operating System<a class="headerlink" href="#install_the_operating_system" title="Permanent link">&para;</a></h3>
 <p>If your have downloaded your Ubuntu server image download the installation ISO from alternate download section.</p>
 <h4 id="alternative_ubuntu_server_installer">Alternative Ubuntu Server installer<a class="headerlink" href="#alternative_ubuntu_server_installer" title="Permanent link">&para;</a></h4>
@@ -702,18 +704,59 @@
 <p class="admonition-title">Note</p>
 <p>We do not cover on how to install the Ubuntu server here. We assume that you already know howto do it.</p>
 </div>
-<h4 id="configure_the_network_interfaces">Configure The Network  Interfaces.<a class="headerlink" href="#configure_the_network_interfaces" title="Permanent link">&para;</a></h4>
-<p>We assume that your OpenStack Ansible host has two network interface cards. We are planning our network like below</p>
-<p><strong>1.</strong> Configure one network card for accessing the Internet</p>
-<div class="codehilite"><pre><span></span>Network: 192.168.10.0/24
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>We also recommend setting your locale to en_US.UTF-8. Other locales might work, but they are not tested or supported.</p>
+</div>
+<h4 id="configure_ubuntu">Configure Ubuntu<a class="headerlink" href="#configure_ubuntu" title="Permanent link">&para;</a></h4>
+<p><strong>1.</strong> Update package source lists</p>
+<div class="codehilite"><pre><span></span>sudo apt-get update
 </pre></div>
 
 
-<p><strong>2.</strong> Configure the other network card for accessing our OpenStack deployment management network.</p>
-<div class="codehilite"><pre><span></span>Network: 172.29.236.0/24
+<p><strong>2.</strong> Upgrade the system packages and kernel:</p>
+<div class="codehilite"><pre><span></span>sudo apt-get dist-upgrade
 </pre></div>
 
 
+<p><strong>3.</strong> Reboot the host.</p>
+<div class="codehilite"><pre><span></span>sudo systemctl reboot
+</pre></div>
+
+
+<p><strong>4.</strong> Ensure that the kernel version is <code>3.13.0-34-generic</code> or later:</p>
+<div class="codehilite"><pre><span></span>uname -r
+</pre></div>
+
+
+<p><strong>5.</strong> Install additional software packages:</p>
+<div class="codehilite"><pre><span></span>sudo apt-get install bridge-utils debootstrap ifenslave ifenslave-2.6 lsof lvm2 chrony openssh-server sudo tcpdump vlan python
+</pre></div>
+
+
+<p><strong>6.</strong>  Install the kernel extra package if you have one for your kernel version</p>
+<div class="codehilite"><pre><span></span>sudo apt install linux-image-extra-$(uname -r)
+</pre></div>
+
+
+<p><strong>7.</strong> Add the appropriate kernel modules to the <code>/etc/modules</code> file to enable VLAN and bond interfaces:</p>
+<div class="codehilite"><pre><span></span>sudo echo &#39;bonding&#39; &gt;&gt; /etc/modules &amp;&amp; sudo  echo &#39;8021q&#39; &gt;&gt; /etc/modules
+</pre></div>
+
+
+<p><strong>8.</strong> Configure Network Time Protocol (NTP) in <code>/etc/chrony/chrony.conf</code> to synchronize with a suitable time source and restart the service:</p>
+<div class="codehilite"><pre><span></span>sudo systemctl enable chrony
+sudo restart chrony
+</pre></div>
+
+
+<p><strong>9.</strong> Reboot the host to activate the changes and use the new kernel.</p>
+<div class="codehilite"><pre><span></span>sudo systemctl reboot
+</pre></div>
+
+
+<h3 id="configure_the_network_interfaces">Configure The Network  Interfaces.<a class="headerlink" href="#configure_the_network_interfaces" title="Permanent link">&para;</a></h3>
+<p>This section describes how to configure network interfaces of your host so that it can be used in OpenStack Ansible deployment.</p>
 <h4 id="changing_netplan_to_ifupdown">Changing <code>netplan</code> to <code>ifupdown</code><a class="headerlink" href="#changing_netplan_to_ifupdown" title="Permanent link">&para;</a></h4>
 <p>The classic <code>ifupdown</code> network configuration used in Debian/Ubuntu  has been replaced by <code>netplan</code> on Ubuntu 18.04 server system.</p>
 <p>You can view the current <code>netplan</code> configuration using  the command below. You may have a different name for your <code>YML</code> as per your installation environment.</p>
@@ -781,8 +824,7 @@ network:
 </pre></div>
 
 
-<h3 id="network_interface_configuration">Network Interface Configuration<a class="headerlink" href="#network_interface_configuration" title="Permanent link">&para;</a></h3>
-<h4 id="infra1_host">Infra1 Host<a class="headerlink" href="#infra1_host" title="Permanent link">&para;</a></h4>
+<h4 id="infra1_host_networking">Infra1 Host Networking<a class="headerlink" href="#infra1_host_networking" title="Permanent link">&para;</a></h4>
 <p>According to above network architecture and design you can configure the network interfaces of infra1 host as below.</p>
 <div class="codehilite"><pre><span></span>sudo nano /etc/network/interfaces
 </pre></div>
@@ -823,25 +865,25 @@ iface br-mgmt inet static
     gateway 172.29.236.1
     dns-nameservers 8.8.8.8 8.8.4.4
 
-# Bind the Internal  VIP
+# Bind the Internal LB VIP as we run haproxy without keepalived
 auto br-mgmt:0
 iface br-mgmt:0 inet static
     address 172.29.236.10
     netmask 255.255.252.0
 
-# Bind the Internal  VIP
-  auto eth1:0
-  iface eth1:0 inet static
-     address 192.168.10.10
-     netmask 255.255.255.0
+# Bind the External LB VIP as we run haproxy without keepalived
+auto eth1:0
+iface eth1:0 inet static
+    address 192.168.10.10
+    netmask 255.255.255.0
 
-# External Network access
-  auto eth1
-  iface eth1 inet static
-     address 192.168.10.11
-     netmask 255.255.255.0
-     gateway 192.168.10.1
-     dns-nameservers 8.8.8.8 8.8.4.4
+# External Network access for Floating IP
+auto eth1
+face eth1 inet static
+   address 192.168.10.11
+   netmask 255.255.255.0
+   gateway 192.168.10.1
+   dns-nameservers 8.8.8.8 8.8.4.4
 
 # OpenStack Networking VXLAN (tunnel/overlay) bridge
 #
@@ -865,13 +907,96 @@ iface br-vlan inet manual
     bridge_fd 0
     bridge_ports eth1
 
-# compute1 Network VLAN bridge
-#auto br-vlan
-#iface br-vlan inet manual
-#    bridge_stp off
-#    bridge_waitport 0
-#    bridge_fd 0
+# Storage bridge (optional)
 #
+# Only the COMPUTE and STORAGE nodes must have an IP address
+# on this bridge. When used by infrastructure nodes, the
+# IP addresses are assigned to containers which use this
+# bridge.Deploying and customizing OpenStack Mitaka with openstack-ansible
+#
+# Storage bridge
+auto br-storage
+iface br-storage inet static
+    bridge_stp off
+    bridge_waitport 0
+    bridge_fd 0
+    bridge_ports eth0.20
+    address 172.29.244.11
+    netmask 255.255.252.0
+</pre></div>
+
+
+<h4 id="compute1_host_networking">Compute1 Host Networking<a class="headerlink" href="#compute1_host_networking" title="Permanent link">&para;</a></h4>
+<p>According to above network architecture and design you can configure the network interfaces of infra1 host as below.</p>
+<div class="codehilite"><pre><span></span>sudo nano /etc/network/interfaces
+</pre></div>
+
+
+<p>Add the the following configurations.</p>
+<div class="codehilite"><pre><span></span># Physical interfaces
+auto eth0
+iface eth0 inet manual
+
+auto eth1
+iface eth1 inet manual
+
+# Container/Host management VLAN interface
+auto eth0.10
+iface eth0.10 inet manual
+    vlan-raw-device eth0
+
+# OpenStack Networking VXLAN (tunnel/overlay) VLAN interface
+auto eth1.30
+iface eth1.30 inet manual
+    vlan-raw-device eth1
+
+# Storage network VLAN interface (optional)
+auto eth0.20
+iface eth0.20 inet manual
+    vlan-raw-device eth0
+
+# Container/Host management bridge
+auto br-mgmt
+iface br-mgmt inet static
+    bridge_stp off
+    bridge_waitport 0
+    bridge_fd 0
+    bridge_ports eth0.10
+    address 172.29.236.12
+    netmask 255.255.252.0
+    gateway 172.29.236.1
+    dns-nameservers 8.8.8.8 8.8.4.4
+
+# External Network access for Floating IP
+auto eth1
+face eth1 inet static
+   address 192.168.10.12
+   netmask 255.255.255.0
+   gateway 192.168.10.1
+   dns-nameservers 8.8.8.8 8.8.4.4
+
+# OpenStack Networking VXLAN (tunnel/overlay) bridge
+#
+# The COMPUTE, NETWORK and INFRA nodes must have an IP address
+# on this bridge.
+#
+auto br-vxlan
+iface br-vxlan inet static
+    bridge_stp off
+    bridge_waitport 0
+    bridge_fd 0
+    bridge_ports eth1.30
+    address 172.29.240.12
+    netmask 255.255.252.0
+
+# OpenStack Networking VLAN bridge
+auto br-vlan
+iface br-vlan inet manual
+    bridge_stp off
+    bridge_waitport 0
+    bridge_fd 0
+    bridge_ports eth1
+
 # For tenant vlan support, create a veth pair to be used when the neutron
 # agent is not containerized on the compute hosts. &#39;eth12&#39; is the value used on
 # the host_bind_override parameter of the br-vlan network section of the
@@ -897,13 +1022,6 @@ iface br-vlan inet manual
 # IP addresses are assigned to containers which use this
 # bridge.Deploying and customizing OpenStack Mitaka with openstack-ansible
 #
-auto br-storage
-iface br-storage inet manual
-    bridge_stp off
-    bridge_waitport 0
-    bridge_fd 0
-    bridge_ports eth0.20
-
 # Storage bridge
 auto br-storage
 iface br-storage inet static
@@ -911,7 +1029,7 @@ iface br-storage inet static
     bridge_waitport 0
     bridge_fd 0
     bridge_ports eth0.20
-    address 172.29.244.11
+    address 172.29.244.12
     netmask 255.255.252.0
 </pre></div>
                 
