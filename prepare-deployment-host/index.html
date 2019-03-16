@@ -333,6 +333,27 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#etcnetplan_for_current_configuration" title="/etc/netplan for current configuration." class="md-nav__link">
+    /etc/netplan for current configuration.
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#to_re-enable_ifupdown_on_this_system_you_can_run" title="To re-enable ifupdown on this system, you can run:" class="md-nav__link">
+    To re-enable ifupdown on this system, you can run:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sudo_apt_install_ifupdown" title="sudo apt install ifupdown" class="md-nav__link">
+    sudo apt install ifupdown
+  </a>
+  
+</li>
+      
       
       
       
@@ -474,6 +495,27 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#etcnetplan_for_current_configuration" title="/etc/netplan for current configuration." class="md-nav__link">
+    /etc/netplan for current configuration.
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#to_re-enable_ifupdown_on_this_system_you_can_run" title="To re-enable ifupdown on this system, you can run:" class="md-nav__link">
+    To re-enable ifupdown on this system, you can run:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sudo_apt_install_ifupdown" title="sudo apt install ifupdown" class="md-nav__link">
+    sudo apt install ifupdown
+  </a>
+  
+</li>
+      
       
       
       
@@ -525,6 +567,30 @@
 <p><strong>2.</strong> Configure the other network card for accessing our OpenStack deployment management network.</p>
 <div class="codehilite"><pre><span></span>Network: 172.29.236.0/24
 </pre></div>
+
+
+<p>The classic <code>ifupdown</code> network configuration used in Debian/Ubuntu  has been replaced by <code>netplan</code> on Ubuntu 18.04 server system.</p>
+<p>You can view the current <code>netplan</code> configuration using  the command below. You may have a different name for your <code>YML</code> as per your installation environment.</p>
+<div class="codehilite"><pre><span></span>cat /etc/netplan/01-netcfg.yaml
+</pre></div>
+
+
+<p>You will get an output like below.</p>
+<div class="codehilite"><pre><span></span># This file describes the network interfaces available on your system
+# For more information, see netplan(5).
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    enp0s3:
+      dhcp4: yes
+</pre></div>
+
+
+<h2 id="etcnetplan_for_current_configuration">/etc/netplan for current configuration.<a class="headerlink" href="#etcnetplan_for_current_configuration" title="Permanent link">&para;</a></h2>
+<h2 id="to_re-enable_ifupdown_on_this_system_you_can_run">To re-enable ifupdown on this system, you can run:<a class="headerlink" href="#to_re-enable_ifupdown_on_this_system_you_can_run" title="Permanent link">&para;</a></h2>
+<h2 id="sudo_apt_install_ifupdown">sudo apt install ifupdown<a class="headerlink" href="#sudo_apt_install_ifupdown" title="Permanent link">&para;</a></h2>
+<p>~                                                </p>
                 
                   
                 
