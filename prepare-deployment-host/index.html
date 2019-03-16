@@ -269,6 +269,18 @@
       
       
 
+
+  <li class="md-nav__item">
+    <a href="../network-architectures/" title="Network Architectures" class="md-nav__link">
+      Network Architectures
+    </a>
+  </li>
+
+    
+      
+      
+      
+
   
 
 
@@ -338,6 +350,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#assigning_ip_addresses" title="Assigning IP Addresses" class="md-nav__link">
+    Assigning IP Addresses
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -395,13 +414,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
     
-    <label class="md-nav__link" for="nav-6">
+    <label class="md-nav__link" for="nav-7">
       Preparing OpenStack Nodes
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-6">
+      <label class="md-nav__title" for="nav-7">
         Preparing OpenStack Nodes
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -495,6 +514,13 @@
           <li class="md-nav__item">
   <a href="#consistent_naming_for_network_interfaces" title="Consistent Naming for Network Interfaces" class="md-nav__link">
     Consistent Naming for Network Interfaces
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assigning_ip_addresses" title="Assigning IP Addresses" class="md-nav__link">
+    Assigning IP Addresses
   </a>
   
 </li>
@@ -599,12 +625,12 @@ network:
 
 
 <p>Look for <code>GRUB_CMDLINE_LINUX</code>  and add the following <code>net.ifnames=0 biosdevname=0</code>.</p>
-<p>From:</p>
+<p><strong>From:</strong></p>
 <div class="codehilite"><pre><span></span>GRUB_CMDLINE_LINUX=&quot;&quot;
 </pre></div>
 
 
-<p>To:</p>
+<p><strong>To:</strong></p>
 <div class="codehilite"><pre><span></span>GRUB_CMDLINE_LINUX=&quot;net.ifnames=0 biosdevname=0&quot;
 </pre></div>
 
@@ -632,6 +658,14 @@ network:
 3: eth1: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc fq_codel state UP mode DEFAULT group default qlen 1000
     link/ether 08:00:27:b4:05:38 brd ff:ff:ff:ff:ff:ff
 </pre></div>
+
+
+<h5 id="assigning_ip_addresses">Assigning IP Addresses<a class="headerlink" href="#assigning_ip_addresses" title="Permanent link">&para;</a></h5>
+<p>Use the following sample configuration  your network.</p>
+<div class="codehilite"><pre><span></span>sudo nano /etc/network/interfaces
+
+Add the following configurations
+</pre></div>
                 
                   
                 
@@ -652,7 +686,7 @@ network:
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../overview/" title="Overview" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../network-architectures/" title="Network Architectures" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -661,7 +695,7 @@ network:
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Overview
+                Network Architectures
               </span>
             </div>
           </a>

@@ -11,6 +11,11 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>https://ostackdoc.github.io/network-architectures/</loc>
+     <lastmod>2019-03-16</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>https://ostackdoc.github.io/prepare-deployment-host/</loc>
      <lastmod>2019-03-16</lastmod>
      <changefreq>daily</changefreq>

@@ -13,7 +13,7 @@
         <meta name="description" content="Guide for openstack-ansible Deployers">
       
       
-        <link rel="canonical" href="https://ostackdoc.github.io/install-node-os/">
+        <link rel="canonical" href="https://ostackdoc.github.io/network-architectures/">
       
       
         <meta name="author" content="Chinthaka Deshapriya">
@@ -42,7 +42,7 @@
     
     
       
-        <title>Installing Node OS - Openstack Ansible Deployment Guide</title>
+        <title>Network Architectures - Openstack Ansible Deployment Guide</title>
       
     
     
@@ -158,7 +158,7 @@
               Openstack Ansible Deployment Guide
             </span>
             <span class="md-header-nav__topic">
-              Installing Node OS
+              Network Architectures
             </span>
           
         </div>
@@ -265,11 +265,18 @@
       
       
 
+  
 
-  <li class="md-nav__item">
-    <a href="../network-architectures/" title="Network Architectures" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+    <a href="./" title="Network Architectures" class="md-nav__link md-nav__link--active">
       Network Architectures
     </a>
+    
   </li>
 
     
@@ -313,12 +320,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
     
     <label class="md-nav__link" for="nav-7">
       Preparing OpenStack Nodes
@@ -334,18 +339,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-    <a href="./" title="Installing Node OS" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../install-node-os/" title="Installing Node OS" class="md-nav__link">
       Installing Node OS
     </a>
-    
   </li>
 
         
@@ -378,12 +376,40 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/ostackdoc/ostackdoc-docs/edit/master/docs/install-node-os.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/ostackdoc/ostackdoc-docs/edit/master/docs/network-architectures.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>Installing Node OS</h1>
+                  <h1>Network Architectures</h1>
                 
-                <p>In this section we have provided you  all steps for installing and configuring your Linux operating  system that you are going to use in your OpenStack deployment nodes. </p>
+                <p>OpenStack-Ansible supports a number of different network architectures, and can be deployed using a single network interface for non-production workloads or using multiple network interfaces or bonded interfaces for production workloads.</p>
+<p>Our OpenStack-Ansible production environment reference architectures in this guide segments traffic using VLANs across multiple network interfaces or bonds.</p>
+<p>The default networks used in an OpenStack-Ansible in this deployment can be observed in the following table:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Network</strong></th>
+<th><strong><code>CIDR</code></strong></th>
+<th><strong><code>VLAN</code></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Management Network</td>
+<td><code>172.25.236.0/22</code></td>
+<td><code>100</code></td>
+</tr>
+<tr>
+<td>Overlay Network</td>
+<td><code>172.25.240.0/22</code></td>
+<td><code>300</code></td>
+</tr>
+<tr>
+<td>Storage Network</td>
+<td><code>172.29.244.0/22</code></td>
+<td><code>200</code></td>
+</tr>
+</tbody>
+</table>
                 
                   
                 
@@ -404,7 +430,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../test-env-example/" title="Test Environment Example" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../overview/" title="Overview" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -413,19 +439,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Test Environment Example
+                Overview
               </span>
             </div>
           </a>
         
         
-          <a href="../configure-node-network/" title="Configuring Node Network" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../prepare-deployment-host/" title="Prepare Deployment Host" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Configuring Node Network
+                Prepare Deployment Host
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
