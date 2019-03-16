@@ -331,6 +331,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#consistent_naming_for_network_interfaces" title="Consistent Naming for Network Interfaces" class="md-nav__link">
+    Consistent Naming for Network Interfaces
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -485,6 +492,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#consistent_naming_for_network_interfaces" title="Consistent Naming for Network Interfaces" class="md-nav__link">
+    Consistent Naming for Network Interfaces
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -572,8 +586,51 @@ network:
 </pre></div>
 
 
-<p>** To re-enable <code>ifupdown</code> on this system, run:</p>
+<p>To re-enable <code>ifupdown</code> on this system, run:</p>
 <div class="codehilite"><pre><span></span>sudo apt install ifupdown
+</pre></div>
+
+
+<h5 id="consistent_naming_for_network_interfaces">Consistent Naming for Network Interfaces<a class="headerlink" href="#consistent_naming_for_network_interfaces" title="Permanent link">&para;</a></h5>
+<p>New versions of Linux Kernel, including the one in our Ubuntu server name the network interfaces using a new convention based on the network interface type (PCI, PCIe, Onboard, Wireless, etc.,) and the relative position of the motherboard which we have slotted the specific card. For example, you may get interface names like <code>enp0s3, eno1, p2p1</code> etc. While this is an advantageous in many cases as it provides consist ant name of each interface during our OpenStack-Ansible deployment we are going to rename them back to our traditional naming convention <code>eth0, eth1</code>, and so on.</p>
+<p>To get back to <code>ethX</code> again will do the following configurations</p>
+<div class="codehilite"><pre><span></span>sudo nano /etc/default/grub
+</pre></div>
+
+
+<p>Look for <code>GRUB_CMDLINE_LINUX</code>  and add the following <code>net.ifnames=0 biosdevname=0</code>.</p>
+<p>From:</p>
+<div class="codehilite"><pre><span></span>GRUB_CMDLINE_LINUX=&quot;&quot;
+</pre></div>
+
+
+<p>To:</p>
+<div class="codehilite"><pre><span></span>GRUB_CMDLINE_LINUX=&quot;net.ifnames=0 biosdevname=0&quot;
+</pre></div>
+
+
+<p>Generate a new grub file using the following command.</p>
+<div class="codehilite"><pre><span></span>sudo grub-mkconfig -o /boot/grub/grub.cfg
+</pre></div>
+
+
+<p>Now reboot your systems</p>
+<div class="codehilite"><pre><span></span>sudo systemctl reboot
+</pre></div>
+
+
+<p>Now check your interface name:</p>
+<div class="codehilite"><pre><span></span>ip link show
+</pre></div>
+
+
+<p>You should get an output like below:</p>
+<div class="codehilite"><pre><span></span>1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc fq_codel state UP mode DEFAULT group default qlen 1000
+    link/ether 08:00:27:cb:31:f1 brd ff:ff:ff:ff:ff:ff
+3: eth1: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc fq_codel state UP mode DEFAULT group default qlen 1000
+    link/ether 08:00:27:b4:05:38 brd ff:ff:ff:ff:ff:ff
 </pre></div>
                 
                   
