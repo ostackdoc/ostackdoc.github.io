@@ -432,6 +432,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#configure_ssh_keys" title="Configure SSH keys" class="md-nav__link">
+    Configure SSH keys
+  </a>
+  
+</li>
+      
       
       
       
@@ -609,6 +616,13 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configure_ssh_keys" title="Configure SSH keys" class="md-nav__link">
+    Configure SSH keys
+  </a>
   
 </li>
       
@@ -1114,6 +1128,60 @@ iface br-storage inet static
 <p>Reboot the system</p>
 <div class="codehilite"><pre><span></span>sudo systemctl reboot
 </pre></div>
+
+
+<h3 id="configure_ssh_keys">Configure SSH keys<a class="headerlink" href="#configure_ssh_keys" title="Permanent link">&para;</a></h3>
+<p>Ansible uses SSH to connect the deployment host and target hosts.</p>
+<p>In this test environment we use <code>infra1</code> host as  our <code>OpenStack-ansible</code> host we will create a <code>ssh</code> key pair as the root user and propagate the public key of the root user to <code>compute1</code> and <code>storage1</code> hosts.</p>
+<p><strong>1.</strong> 'Run the following command as <code>root</code> user in <code>infra1</code> host</p>
+<div class="codehilite"><pre><span></span>sudo su -
+ssh-keygen -t rsa
+</pre></div>
+
+
+<p>Press <code>Enter</code> key to create our keys without a passphrase</p>
+<p>You will get an output like below.</p>
+<div class="codehilite"><pre><span></span>root@guru:~# ssh-keygen -t rsa
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /root/.ssh/id_rsa.
+Your public key has been saved in /root/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:WpPMnxdgptMOBoV+qcSgO8qQDWZjtEtfmsB08A5Zr6s root@guru
+The key&#39;s randomart image is:
++---[RSA 2048]----+
+| ...   ..        |
+| o+.o ..         |
+|+ooo =.  .+      |
+|.X+ ..++o* .     |
+|=+=++. oS . .    |
+|o.++. .+ * . .   |
+|o. o  .   + .    |
+|...        .     |
+| E               |
++----[SHA256]-----+
+</pre></div>
+
+
+<p><strong>2.</strong> Copy the keys to compute1 and storage1 hosts.</p>
+<div class="codehilite"><pre><span></span>ssh-copy-id root@compute1
+ssh-copy-id root@Storage1
+</pre></div>
+
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We assume that  you have configured your DNS or at least <code>/etc/hosts</code> file to resolve hostnames</p>
+</div>
+<p><strong>3.</strong> Test it</p>
+<div class="codehilite"><pre><span></span>ssh root@compute1
+ssh root@Storage1
+</pre></div>
+
+
+<p>If you can connect and get the shell without authenticating, it is working. SSH provides a shell without asking for a password.</p>
                 
                   
                 
