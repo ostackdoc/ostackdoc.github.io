@@ -80,7 +80,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
-<a class="md-skip" href="#network_architecture" tabindex="1">
+<a class="md-skip" href="#configuring_the_network" tabindex="1">
         Skip to content
       </a>
 <header class="md-header" data-md-component="header">
@@ -186,6 +186,11 @@
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#configuring_the_network" title="Configuring the network">
+    Configuring the network
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#network_architecture" title="Network Architecture">
     Network Architecture
   </a>
@@ -261,6 +266,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="#configure_ssh_keys" title="Configure SSH keys">
     Configure SSH keys
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuring_the_storage" title="Configuring The storage">
+    Configuring The storage
   </a>
 </li>
 </ul>
@@ -301,6 +311,11 @@
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#configuring_the_network" title="Configuring the network">
+    Configuring the network
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#network_architecture" title="Network Architecture">
     Network Architecture
   </a>
@@ -378,6 +393,11 @@
     Configure SSH keys
   </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuring_the_storage" title="Configuring The storage">
+    Configuring The storage
+  </a>
+</li>
 </ul>
 </nav>
 </div>
@@ -398,6 +418,54 @@
 </ul>
 <p>The following figure depicts this test environment and its components.</p>
 <p><img alt="" src="../img/openstack-test-env-v1.jpg"/></p>
+<h3 id="configuring_the_network">Configuring the network<a class="headerlink" href="#configuring_the_network" title="Permanent link">¶</a></h3>
+<p>OpenStack-Ansible uses bridges to connect physical and logical network interfaces on the host to virtual network interfaces within containers. Target hosts need to be configured with the following network bridges:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Bridge name</strong></th>
+<th><strong>Best configured on</strong></th>
+<th><strong>With a static IP</strong>*</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>br-mgmt</td>
+<td>On every node</td>
+<td>Always</td>
+</tr>
+<tr>
+<td>br-storage</td>
+<td>On every storage node</td>
+<td>When component is deployed on metal</td>
+</tr>
+<tr>
+<td></td>
+<td>On every compute node</td>
+<td>Always</td>
+</tr>
+<tr>
+<td>br-vxlan</td>
+<td>On every network node</td>
+<td>When component is deployed on metal</td>
+</tr>
+<tr>
+<td></td>
+<td>On every compute node</td>
+<td>Always</td>
+</tr>
+<tr>
+<td>br-vlan</td>
+<td>On every network node</td>
+<td>Never</td>
+</tr>
+<tr>
+<td></td>
+<td>On every compute node</td>
+<td>Never</td>
+</tr>
+</tbody>
+</table>
 <h3 id="network_architecture">Network Architecture<a class="headerlink" href="#network_architecture" title="Permanent link">¶</a></h3>
 <p>In our test environment each has a dual port Ethernet card and we will configure our test environment network as a multiple interfaces as depicted by the diagram below.</p>
 <p><img alt="" src="../img/multiple-interfaces.jpg"/></p>
@@ -823,7 +891,10 @@ ssh-keygen -t rsa
 </pre></div>
 <p>Press <code>Enter</code> key to create our keys without a passphrase</p>
 <p>You will get an output like below.</p>
-<div class="codehilite"><pre><span></span>root@guru:~# ssh-keygen -t rsa
+<div class="codehilite"><pre><span></span>OpenStack-Ansible automatically configures LVM on the nodes, and overrides any existing LVM configuration. If you had a customized LVM configuration, edit the generated configuration file as needed.
+
+
+root@guru:~# ssh-keygen -t rsa
 Generating public/private rsa key pair.
 Enter file in which to save the key (/root/.ssh/id_rsa):
 Enter passphrase (empty for no passphrase):
@@ -855,9 +926,21 @@ ssh-copy-id root@Storage1
 </div>
 <p><strong>3.</strong> Test it</p>
 <div class="codehilite"><pre><span></span>ssh root@compute1
-ssh root@Storage1
+ssh root@Storage1Note
+
+OpenStack-Ansible automatically configures LVM on the nodes, and overrides any existing LVM configuration. If you had a customized LVM configuration, edit the generated configuration file as needed.
+
+Note
+
+OpenStack-Ansible automatically configures LVM on the nodes, and overrides any existing LVM configuration. If you had a customized LVM configuration, edit the generated configuration file as needed.
 </pre></div>
 <p>If you can connect and get the shell without authenticating, it is working. SSH provides a shell without asking for a password.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>OpenStack-Ansible deployments require the presence of a <code>/root/.ssh/id_rsa.pub</code> file on the deployment host. The contents of this file is inserted into an <code>authorized_keys</code> file for the containers, which is a necessary step for the Ansible playbooks. You can override this behavior by setting the <code>lxc_container_ssh_key</code> variable to the public key for the container.</p>
+</div>
+<h3 id="configuring_the_storage">Configuring The storage<a class="headerlink" href="#configuring_the_storage" title="Permanent link">¶</a></h3>
+<p>Logical Volume Manager (LVM) enables a single device to be split into multiple logical volumes that appear as a physical storage device to the operating system. The Block Storage (cinder) service, and LXC containers that optionally run the OpenStack infrastructure, can optionally use LVM for their data storage.</p>
 </article>
 </div>
 </div>
