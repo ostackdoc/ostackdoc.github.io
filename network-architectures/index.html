@@ -343,6 +343,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#multiple_bond_sample_network_configuration" title="Multiple Bond Sample Network Configuration" class="md-nav__link">
+    Multiple Bond Sample Network Configuration
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -507,6 +514,13 @@
           <li class="md-nav__item">
   <a href="#multiple_interfaces_or_bonds" title="Multiple Interfaces or Bonds" class="md-nav__link">
     Multiple Interfaces or Bonds
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple_bond_sample_network_configuration" title="Multiple Bond Sample Network Configuration" class="md-nav__link">
+    Multiple Bond Sample Network Configuration
   </a>
   
 </li>
@@ -692,7 +706,6 @@ iface br-vxlan inet static
 #    bridge_waitport 0
 #    bridge_fd 0
 #    bridge_ports bond0
-
 # compute1 Network VLAN bridge
 #auto br-vlan
 #iface br-vlan inet manual
@@ -700,7 +713,6 @@ iface br-vxlan inet static
 #    bridge_waitport 0
 #    bridge_fd 0
 #
-
 # Storage bridge (optional)
 #
 # Only the COMPUTE and STORAGE nodes must have an IP address
@@ -734,6 +746,7 @@ iface br-storage inet manual
 <p><img alt="" src="../img/multiple-interfaces.jpg" /></p>
 <p>The following diagram demonstrates hosts using multiple bonds:</p>
 <p><img alt="" src="../img/multiple-interfaces.jpg" /></p>
+<h4 id="multiple_bond_sample_network_configuration">Multiple Bond Sample Network Configuration<a class="headerlink" href="#multiple_bond_sample_network_configuration" title="Permanent link">&para;</a></h4>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If your environment does not have <code>eth0</code>, but instead has <code>p1p1</code> or some other interface name, ensure that all references to eth0 in all configuration files are replaced with the appropriate name. The same applies to additional network interfaces.</p>
