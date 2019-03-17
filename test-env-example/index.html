@@ -514,6 +514,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#setup_nat_gateway" title="Setup NAT Gateway." class="md-nav__link">
+    Setup NAT Gateway.
+  </a>
+  
+</li>
+      
       
       
       
@@ -776,6 +783,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#setup_nat_gateway" title="Setup NAT Gateway." class="md-nav__link">
+    Setup NAT Gateway.
+  </a>
+  
+</li>
+      
       
       
       
@@ -807,7 +821,7 @@
 <li>Internet access via the router address <code>192.168.10.1</code> on the Management Network</li>
 </ul>
 <p>The following figure depicts this test environment and its components.</p>
-<p><img alt="" src="../img/openstack-test-env-v1.jpg" /></p>
+<p><img alt="zoomify" src="../img/openstack-test-env-v1.jpg" /></p>
 <h3 id="configuring_the_network">Configuring the network<a class="headerlink" href="#configuring_the_network" title="Permanent link">&para;</a></h3>
 <p>OpenStack-Ansible uses bridges to connect physical and logical network interfaces on the host to virtual network interfaces within containers. Target hosts need to be configured with the following network bridges:</p>
 <table>
@@ -880,7 +894,7 @@
 <p>The container network interface that the bridge attaches to is configurable in the <code>openstack_user_config.yml</code> file.</p>
 <h3 id="network_architecture">Network Architecture<a class="headerlink" href="#network_architecture" title="Permanent link">&para;</a></h3>
 <p>In our test environment each has a dual port Ethernet card and we will configure our test environment network as a multiple interfaces as depicted by the diagram below.</p>
-<p><img alt="" src="../img/multiple-interfaces.jpg" /></p>
+<p><img alt="zoomify" src="../img/multiple-interfaces.jpg" /></p>
 <h3 id="network_cidrvlan_assignments">Network CIDR/VLAN Assignments<a class="headerlink" href="#network_cidrvlan_assignments" title="Permanent link">&para;</a></h3>
 <p>The following CIDR and VLAN assignments are used for this environment.</p>
 <table>
@@ -1390,7 +1404,7 @@ The key&#39;s randomart image is:
 
 <p><strong>2.</strong> Copy the keys to compute1 and storage1 hosts.</p>
 <div class="codehilite"><pre><span></span>ssh-copy-id root@compute1
-ssh-copy-id root@Storage1
+ssh-copy-id root@storage1
 </pre></div>
 
 
@@ -1427,7 +1441,7 @@ sudo  vgcreate cinder-volumes physical_volume_device_path (/dev/sda5)
 
 <p><strong>2.</strong> Optionally, create an LVM volume group named <code>lxc</code> for container file systems if you want to use <code>LXC</code> with <code>LVM</code>. If the <code>lxc</code> volume group does not exist, containers are automatically installed on the file system under <code>/var/lib/lxc</code> by default.</p>
 <h4 id="setup_dns_resolver">Setup DNS Resolver<a class="headerlink" href="#setup_dns_resolver" title="Permanent link">&para;</a></h4>
-<p>Ubuntu 18.04 systems make a symlink to <code>`/etc/resolv.conf</code> with <code>systemd-resolve</code> by default.</p>
+<p>Ubuntu 18.04 systems make a symlink to <code>`/etc/resolv.conf</code> with <code>../run/systemd/resolve/stub-resolv.conf</code> by default.</p>
 <p><strong>1.</strong> Remove symlink</p>
 <div class="codehilite"><pre><span></span>sudo rm -f /etc/resolv.conf
 </pre></div>
@@ -1444,6 +1458,8 @@ sudo  vgcreate cinder-volumes physical_volume_device_path (/dev/sda5)
 
 
 <p><strong>4.</strong> Carry out above in all openstack hosts.</p>
+<h3 id="setup_nat_gateway">Setup NAT Gateway.<a class="headerlink" href="#setup_nat_gateway" title="Permanent link">&para;</a></h3>
+<p>In our test environment setup <code>infra1</code> host will be used as the Ansible host and it will also act as the gateway for OpenStack Ansible lxc lxc_containers. Let's to the following configurations to get this done.</p>
                 
                   
                 
