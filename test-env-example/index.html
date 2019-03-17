@@ -950,19 +950,19 @@
 </thead>
 <tbody>
 <tr>
-<td>infra1</td>
+<td><code>infra1</code></td>
 <td><code>172.29.236.11</code></td>
 <td><code>172.29.240.11</code></td>
 <td><code>172.29.244.11</code></td>
 </tr>
 <tr>
-<td>compute1</td>
+<td><code>compute1</code></td>
 <td><code>172.29.236.12</code></td>
 <td><code>172.29.240.12</code></td>
 <td><code>172.29.244.12</code></td>
 </tr>
 <tr>
-<td>storage1</td>
+<td><code>storage1</code></td>
 <td><code>172.29.236.13</code></td>
 <td><code>-</code></td>
 <td><code>172.29.244.13</code></td>
@@ -984,7 +984,7 @@
 <th><strong>Device</strong></th>
 <th><strong>Size</strong></th>
 <th><strong>Type</strong></th>
-<th><em>Mount Point</em>*</th>
+<th><strong>Mount Point</strong></th>
 </tr>
 </thead>
 <tbody>
@@ -998,20 +998,20 @@
 <td><code>/dev/vg_infra1/lv_swap</code></td>
 <td><code>RAM+2G</code></td>
 <td><code>EXT4</code></td>
-<td><code>none'</code></td>
+<td><code>none</code></td>
 </tr>
 <tr>
 <td><code>/dev/vg_infra1/lv_root</code></td>
 <td><code>100G</code></td>
 <td><code>EXT4</code></td>
-<td><code>none'</code></td>
+<td><code>/</code></td>
 </tr>
 </tbody>
 </table>
-<div class="admonition information">
-<p class="admonition-title">Information</p>
-<p>Keep the remaining space in-allocated since we are going to user them later for other uses</p>
-</div>
+<p>You can apply the same for the <code>compute1</code> and <code>storage1</code> nodes as well.</p>
+<blockquote>
+<p>:bulb:  Keep the remaining space in-allocated since we are going to user them later for few other uses</p>
+</blockquote>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>We do not cover on how to install the Ubuntu server here. We assume that you already know howto do it.</p>
