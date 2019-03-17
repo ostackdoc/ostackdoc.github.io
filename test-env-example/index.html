@@ -1468,21 +1468,27 @@ sudo  vgcreate cinder-volumes physical_volume_device_path (/dev/sda5)
 
 
 <ol>
-<li>Update without rebooting
-``1
-sudo sysctl -p</li>
+<li>Update without rebooting</li>
 </ol>
-<div class="codehilite"><pre><span></span>3. Create a Masquerading rule to enable SNAT
+<div class="codehilite"><pre><span></span>sudo sysctl -p
 </pre></div>
 
 
-<p>sudo iptables -t nat -A POSTROUTING -j MASQUERADE</p>
-<div class="codehilite"><pre><span></span>4. Save your rules
+<ol>
+<li>Create a Masquerading rule to enable SNAT</li>
+</ol>
+<div class="codehilite"><pre><span></span>sudo iptables -t nat -A POSTROUTING -j MASQUERADE
 </pre></div>
 
 
-<p>sudo mkdir -p /etc/iptables
-sudo sudo iptables-save &gt; /etc/iptables/rules.v4</p>
+<ol>
+<li>Save your rules</li>
+</ol>
+<div class="codehilite"><pre><span></span>sudo mkdir -p /etc/iptables
+sudo sudo iptables-save &gt; /etc/iptables/rules.v4
+</pre></div>
+
+
 <ol>
 <li>You can automate the restore process at reboot by installing an additional package for <code>iptables</code> which takes over the loading of the saved rules. To this with the following command</li>
 </ol>
