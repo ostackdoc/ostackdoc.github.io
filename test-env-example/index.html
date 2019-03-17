@@ -428,6 +428,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#suggested_partitions_scheme_for_openstack_nodes" title="Suggested Partitions Scheme for OpenStack Nodes." class="md-nav__link">
+    Suggested Partitions Scheme for OpenStack Nodes.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#configure_ubuntu" title="Configure Ubuntu" class="md-nav__link">
     Configure Ubuntu
   </a>
@@ -692,6 +699,13 @@
           <li class="md-nav__item">
   <a href="#alternative_ubuntu_server_installer" title="Alternative Ubuntu Server installer" class="md-nav__link">
     Alternative Ubuntu Server installer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suggested_partitions_scheme_for_openstack_nodes" title="Suggested Partitions Scheme for OpenStack Nodes." class="md-nav__link">
+    Suggested Partitions Scheme for OpenStack Nodes.
   </a>
   
 </li>
@@ -962,6 +976,42 @@
 <h4 id="alternative_ubuntu_server_installer">Alternative Ubuntu Server installer<a class="headerlink" href="#alternative_ubuntu_server_installer" title="Permanent link">&para;</a></h4>
 <p>Since we  require advanced networking and storage features such as; LVM, RAID, multipath, vlans, bonds, or re-using existing partitions, you will want to continue to use the alternate installer.</p>
 <p><a href="http://cdimage.ubuntu.com/releases/18.04.2/release/ubuntu-18.04.2-server-amd64.iso">Download the alternate installer</a></p>
+<h4 id="suggested_partitions_scheme_for_openstack_nodes">Suggested Partitions Scheme for OpenStack Nodes.<a class="headerlink" href="#suggested_partitions_scheme_for_openstack_nodes" title="Permanent link">&para;</a></h4>
+<p>We  recommend you the following partitions scheme for your node installation. We will be using LVM devices created on a Volume Group by the short  hostname (<code>hostname -s</code>) of the system. For example <code>vg_infra1</code>  for <code>infra1</code>.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Device</strong></th>
+<th><strong>Size</strong></th>
+<th><strong>Type</strong></th>
+<th><em>Mount Point</em>*</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/dev/vg_infra1/lv_boot</code></td>
+<td><code>200MB</code></td>
+<td><code>EXT4</code></td>
+<td><code>/boot</code></td>
+</tr>
+<tr>
+<td><code>/dev/vg_infra1/lv_swap</code></td>
+<td><code>RAM+2G</code></td>
+<td><code>EXT4</code></td>
+<td><code>none'</code></td>
+</tr>
+<tr>
+<td><code>/dev/vg_infra1/lv_root</code></td>
+<td><code>100G</code></td>
+<td><code>EXT4</code></td>
+<td><code>none'</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition information">
+<p class="admonition-title">Information</p>
+<p>Keep the remaining space in-allocated since we are going to user them later for other uses</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>We do not cover on how to install the Ubuntu server here. We assume that you already know howto do it.</p>
