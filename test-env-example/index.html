@@ -499,6 +499,19 @@
     Configuring The Storage
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup_dns_resolver" title="Setup DNS Resolver" class="md-nav__link">
+    Setup DNS Resolver
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
       
@@ -747,6 +760,19 @@
   <a href="#configuring_the_storage" title="Configuring The Storage" class="md-nav__link">
     Configuring The Storage
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup_dns_resolver" title="Setup DNS Resolver" class="md-nav__link">
+    Setup DNS Resolver
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1400,6 +1426,24 @@ sudo  vgcreate cinder-volumes physical_volume_device_path (/dev/sda5)
 
 
 <p><strong>2.</strong> Optionally, create an LVM volume group named <code>lxc</code> for container file systems if you want to use <code>LXC</code> with <code>LVM</code>. If the <code>lxc</code> volume group does not exist, containers are automatically installed on the file system under <code>/var/lib/lxc</code> by default.</p>
+<h4 id="setup_dns_resolver">Setup DNS Resolver<a class="headerlink" href="#setup_dns_resolver" title="Permanent link">&para;</a></h4>
+<p>Ubuntu 18.04 systems make a symlink to <code>`/etc/resolv.conf</code> with <code>systemd-resolve</code> by default.</p>
+<p><strong>1.</strong> Remove symlink</p>
+<div class="codehilite"><pre><span></span>sudo rm -f /etc/resolv.conf
+</pre></div>
+
+
+<p><strong>2.</strong> Create the Resolver</p>
+<div class="codehilite"><pre><span></span>sudo echo &quot;nameserver 8.8.8.8&quot; &gt; /etc/resolv.conf
+</pre></div>
+
+
+<p><strong>3.</strong> Test it</p>
+<div class="codehilite"><pre><span></span>ping -c4 google.command
+</pre></div>
+
+
+<p><strong>4.</strong> Carry out above in all openstack hosts.</p>
                 
                   
                 
