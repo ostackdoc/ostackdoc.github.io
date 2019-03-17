@@ -528,6 +528,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#setup_openstack_ansible_host" title="Setup  OpenStack Ansible Host" class="md-nav__link">
+    Setup  OpenStack Ansible Host
+  </a>
+  
+</li>
+      
       
       
       
@@ -804,6 +811,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#setup_openstack_ansible_host" title="Setup  OpenStack Ansible Host" class="md-nav__link">
+    Setup  OpenStack Ansible Host
+  </a>
+  
+</li>
+      
       
       
       
@@ -1009,8 +1023,10 @@
 </tbody>
 </table>
 <p>You need to apply the same above  for the <code>compute1</code> and <code>storage1</code> nodes as well.</p>
-<p>:bulb:
-    Keep the remaining space in-allocated since we are going to use them later for few other uses</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Keep the remaining space in-allocated since we are going to use them later for few other uses</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>We do not cover on how to install the Ubuntu server here. We assume that you already know howto do it.</p>
@@ -1134,7 +1150,6 @@ iface br-mgmt inet static
     bridge_ports eth0.10
     address 172.29.236.11
     netmask 255.255.252.0
-    gateway 172.29.236.1
     dns-nameservers 8.8.8.8 8.8.4.4
 
 # Bind the Internal LB VIP as we run haproxy without keepalived
@@ -1424,7 +1439,7 @@ If you can connect and get the shell without authenticating, it is working. SSH 
 <p class="admonition-title">Note</p>
 <p>OpenStack-Ansible automatically configures LVM on the nodes, and overrides any existing LVM configuration. If you had a customized LVM configuration, edit the generated configuration file as needed.</p>
 </div>
-<p>1. To use the optional Block Storage (cinder) service, create an LVM volume group named <code>cinder-volumes</code> on the storage host. Specify a metadata size of <code>2048</code> when creating the physical volume. For example:
+<p>1. To use the optional Block Storage (cinder) service, create an LVM volume group named <code>cinder-volumes</code> on the storage host. Specify a metadata size of <code>2048</code> when creating the physical volume.  For example:
 <div class="codehilite"><pre><span></span>sudo pvcreate --metadatasize 2048  physical_volume_device_path (/dev/sda5)
 sudo  vgcreate cinder-volumes physical_volume_device_path (/dev/sda5)
 </pre></div>
@@ -1451,6 +1466,34 @@ sudo  vgcreate cinder-volumes physical_volume_device_path (/dev/sda5)
 <p class="admonition-title">Important</p>
 <p>If you make further changes to your <code>iptables</code> rules, remember to save them again using the  command in the step 4 above. The <code>iptables-persistent</code> looks for the files <code>rules.v4</code> and <code>rules.v6</code> under <code>/etc/iptables</code>.</p>
 </div>
+<h3 id="setup_openstack_ansible_host">Setup  OpenStack Ansible Host<a class="headerlink" href="#setup_openstack_ansible_host" title="Permanent link">&para;</a></h3>
+<p>In this example environment  we use <code>infra1</code> node  as the 'openstack-anible' host.</p>
+<p>Execute the following commands in infra1 host.</p>
+<p>1. Update package source lists:
+<div class="codehilite"><pre><span></span>sudo apt-get update
+</pre></div></p>
+<p>2. Upgrade the system packages and kernel:
+<div class="codehilite"><pre><span></span>sudo apt-get dist-upgrade
+</pre></div></p>
+<p>3. Reboot the host.
+<div class="codehilite"><pre><span></span>sudo system reboot
+
+4\. Install additional software packages if they were not installed during the operating system installation:
+</pre></div>
+sudo apt-get install aptitude build-essential git ntp ntpdate openssh-server python-dev sudo
+<div class="codehilite"><pre><span></span>## Install the Source and Dependencies
+
+Install the source and dependencies for the deployment host.
+
+1\. Clone the latest stable release of the OpenStack-Ansible Git repository in the `/opt/openstack-ansible` directory:
+</pre></div>
+sudo su -
+git clone -b 18.1.4 <a href="https://git.openstack.org/openstack/openstack-ansible">https://git.openstack.org/openstack/openstack-ansible</a> /opt/openstack-ansible
+<div class="codehilite"><pre><span></span>2\. Change to the `/opt/openstack-ansible` directory, and run the Ansible bootstrap script:
+</pre></div>
+cd /opt/openstack-ansible
+scripts/bootstrap-ansible.sh
+```</p>
                 
                   
                 
