@@ -882,7 +882,7 @@
 <p>The container network interface that the bridge attaches to is configurable in the <code>openstack_user_config.yml</code> file.</p>
 <h4 id="storagebr-storage">Storage:<code>br-storage</code><a class="headerlink" href="#storagebr-storage" title="Permanent link">&para;</a></h4>
 <p>The <code>br-storage</code> bridge provides segregated access to Block Storage devices between OpenStack services and Block Storage devices.</p>
-<p>The bridge attaches to a physical or logical interface, typically a <code>bond0 VLAN subinterface</code>. It also attaches to eth2 in each associated container.</p>
+<p>The bridge attaches to a physical or logical interface, typically a <code>bond0 VLAN subinterface</code>. It also attaches to <code>eth2</code> in each associated container.</p>
 <p>The container network interface that the bridge attaches to is configurable in the <code>openstack_user_config.yml</code> file.</p>
 <h4 id="openstack_networking_tunnelbr-vxlan">OpenStack Networking tunnel:<code>br-vxlan</code><a class="headerlink" href="#openstack_networking_tunnelbr-vxlan" title="Permanent link">&para;</a></h4>
 <p>The <code>br-vxlan</code> bridge is required if the environment is configured to allow projects to create virtual networks using <code>VXLAN</code>. It provides the interface for virtual (<code>VXLAN</code>) tunnel networks.</p>
