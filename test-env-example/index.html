@@ -352,8 +352,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#container_management_br-mgmt" title="Container management: br-mgmt" class="md-nav__link">
-    Container management: br-mgmt
+  <a href="#container_managementbr-mgmt" title="Container management:br-mgmt" class="md-nav__link">
+    Container management:br-mgmt
   </a>
   
 </li>
@@ -366,15 +366,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#openstack_networking_tunnel_br-vxlan" title="OpenStack Networking tunnel: br-vxlan" class="md-nav__link">
-    OpenStack Networking tunnel: br-vxlan
+  <a href="#openstack_networking_tunnelbr-vxlan" title="OpenStack Networking tunnel:br-vxlan" class="md-nav__link">
+    OpenStack Networking tunnel:br-vxlan
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#openstack_networking_provider_br-vlan" title="OpenStack Networking provider: br-vlan" class="md-nav__link">
-    OpenStack Networking provider: br-vlan
+  <a href="#openstack_networking_providerbr-vlan" title="OpenStack Networking provider:br-vlan" class="md-nav__link">
+    OpenStack Networking provider:br-vlan
   </a>
   
 </li>
@@ -621,8 +621,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#container_management_br-mgmt" title="Container management: br-mgmt" class="md-nav__link">
-    Container management: br-mgmt
+  <a href="#container_managementbr-mgmt" title="Container management:br-mgmt" class="md-nav__link">
+    Container management:br-mgmt
   </a>
   
 </li>
@@ -635,15 +635,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#openstack_networking_tunnel_br-vxlan" title="OpenStack Networking tunnel: br-vxlan" class="md-nav__link">
-    OpenStack Networking tunnel: br-vxlan
+  <a href="#openstack_networking_tunnelbr-vxlan" title="OpenStack Networking tunnel:br-vxlan" class="md-nav__link">
+    OpenStack Networking tunnel:br-vxlan
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#openstack_networking_provider_br-vlan" title="OpenStack Networking provider: br-vlan" class="md-nav__link">
-    OpenStack Networking provider: br-vlan
+  <a href="#openstack_networking_providerbr-vlan" title="OpenStack Networking provider:br-vlan" class="md-nav__link">
+    OpenStack Networking provider:br-vlan
   </a>
   
 </li>
@@ -872,23 +872,23 @@
 </table>
 <h3 id="host_network_bridges_information">Host Network Bridges Information<a class="headerlink" href="#host_network_bridges_information" title="Permanent link">&para;</a></h3>
 <p>This section describes the Network Bridges used by OpenStack hosts</p>
-<h4 id="lxc_internal_lxcbr0">LXC internal: lxcbr0<a class="headerlink" href="#lxc_internal_lxcbr0" title="Permanent link">&para;</a></h4>
+<h4 id="lxc_internal_lxcbr0">LXC internal: <code>lxcbr0</code><a class="headerlink" href="#lxc_internal_lxcbr0" title="Permanent link">&para;</a></h4>
 <p>The <code>lxcbr0</code> bridge is required for LXC, but OpenStack-Ansible configures it automatically. It provides external (typically Internet) connectivity to containers with <code>dnsmasq (DHCP/DNS) + NAT</code>.</p>
 <p>This bridge does not directly attach to any physical or logical interfaces on the host because <code>iptables</code> handles connectivity. It attaches to <code>eth0</code> in each container.</p>
 <p>The container network that the bridge attaches to is configurable in the <code>openstack_user_config.yml</code> file in the provider_networks dictionary.</p>
-<h4 id="container_management_br-mgmt">Container management: br-mgmt<a class="headerlink" href="#container_management_br-mgmt" title="Permanent link">&para;</a></h4>
+<h4 id="container_managementbr-mgmt">Container management:<code>br-mgmt</code><a class="headerlink" href="#container_managementbr-mgmt" title="Permanent link">&para;</a></h4>
 <p>The <code>br-mgmt</code> bridge provides management of and communication between the infrastructure and OpenStack services.</p>
 <p>The bridge attaches to a physical or logical interface, typically a <code>bond0 VLAN subinterface</code>. It also attaches to <code>eth1</code> in each container.</p>
 <p>The container network interface that the bridge attaches to is configurable in the <code>openstack_user_config.yml</code> file.</p>
-<h4 id="storagebr-storage">Storage:br-storage<a class="headerlink" href="#storagebr-storage" title="Permanent link">&para;</a></h4>
+<h4 id="storagebr-storage">Storage:<code>br-storage</code><a class="headerlink" href="#storagebr-storage" title="Permanent link">&para;</a></h4>
 <p>The <code>br-storage</code> bridge provides segregated access to Block Storage devices between OpenStack services and Block Storage devices.</p>
 <p>The bridge attaches to a physical or logical interface, typically a <code>bond0 VLAN subinterface</code>. It also attaches to eth2 in each associated container.</p>
 <p>The container network interface that the bridge attaches to is configurable in the <code>openstack_user_config.yml</code> file.</p>
-<h4 id="openstack_networking_tunnel_br-vxlan">OpenStack Networking tunnel: br-vxlan<a class="headerlink" href="#openstack_networking_tunnel_br-vxlan" title="Permanent link">&para;</a></h4>
+<h4 id="openstack_networking_tunnelbr-vxlan">OpenStack Networking tunnel:<code>br-vxlan</code><a class="headerlink" href="#openstack_networking_tunnelbr-vxlan" title="Permanent link">&para;</a></h4>
 <p>The <code>br-vxlan</code> bridge is required if the environment is configured to allow projects to create virtual networks using <code>VXLAN</code>. It provides the interface for virtual (<code>VXLAN</code>) tunnel networks.</p>
 <p>The bridge attaches to a physical or logical interface, typically a <code>bond1 VLAN subinterface</code>. It also attaches to <code>eth10</code> in each associated container.</p>
 <p>The container network interface it attaches to is configurable in the <code>openstack_user_config.yml</code> file.</p>
-<h4 id="openstack_networking_provider_br-vlan">OpenStack Networking provider: br-vlan<a class="headerlink" href="#openstack_networking_provider_br-vlan" title="Permanent link">&para;</a></h4>
+<h4 id="openstack_networking_providerbr-vlan">OpenStack Networking provider:<code>br-vlan</code><a class="headerlink" href="#openstack_networking_providerbr-vlan" title="Permanent link">&para;</a></h4>
 <p>The <code>br-vlan</code> bridge is provides infrastructure for <code>VLAN</code> tagged or flat (no <code>VLAN</code> tag) networks.</p>
 <p>The bridge attaches to a physical or logical interface, typically <code>bond1</code>. It attaches to <code>eth11</code> for VLAN type networks in each associated container. It is not assigned an IP address because it handles only layer 2 connectivity.</p>
 <p>The container network interface that the bridge attaches to is configurable in the <code>openstack_user_config.yml</code> file.</p>
@@ -1450,7 +1450,7 @@ sudo  vgcreate cinder-volumes physical_volume_device_path (/dev/sda5)
 <ol>
 <li>Create the Resolver</li>
 </ol>
-<div class="codehilite"><pre><span></span>sudo echo &quot;nameserver 8.8.8.8&quot; &gt; /etc/resolv.conf
+<div class="codehilite"><pre><span></span>sudo echo &quot;nameserv*er 8.8.8.8&quot; &gt; /etc/resolv.conf
 </pre></div>
 
 
