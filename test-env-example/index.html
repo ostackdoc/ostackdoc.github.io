@@ -1010,7 +1010,7 @@
 </table>
 <p>You can apply the same for the <code>compute1</code> and <code>storage1</code> nodes as well.</p>
 <blockquote>
-<p>:bulb:   Keep the remaining space in-allocated since we are going to user them later for other uses</p>
+<p>:boom:   Keep the remaining space in-allocated since we are going to user them later for other uses</p>
 </blockquote>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1021,52 +1021,34 @@
 <p>We also recommend setting your locale to en_US.UTF-8. Other locales might work, but they are not tested or supported.</p>
 </div>
 <h4 id="configure_ubuntu">Configure Ubuntu<a class="headerlink" href="#configure_ubuntu" title="Permanent link">&para;</a></h4>
-<p><strong>1.</strong> Update package source lists</p>
+<p><strong>1.</strong> Update package source lists
 <div class="codehilite"><pre><span></span>sudo apt-get update
 </pre></div>
-
-
-<p><strong>2.</strong> Upgrade the system packages and kernel:</p>
+<strong>2.</strong> Upgrade the system packages and kernel:
 <div class="codehilite"><pre><span></span>sudo apt-get dist-upgrade
 </pre></div>
-
-
-<p><strong>3.</strong> Reboot the host.</p>
+<strong>3.</strong> Reboot the host.
 <div class="codehilite"><pre><span></span>sudo systemctl reboot
 </pre></div>
-
-
-<p><strong>4.</strong> Ensure that the kernel version is <code>3.13.0-34-generic</code> or later:</p>
+<strong>4.</strong> Ensure that the kernel version is <code>3.13.0-34-generic</code> or later:
 <div class="codehilite"><pre><span></span>uname -r
 </pre></div>
-
-
-<p><strong>5.</strong> Install additional software packages:</p>
+<strong>5.</strong> Install additional software packages:
 <div class="codehilite"><pre><span></span>sudo apt-get install bridge-utils debootstrap ifenslave ifenslave-2.6 lsof lvm2 chrony openssh-server sudo tcpdump vlan python
 </pre></div>
-
-
-<p><strong>6.</strong>  Install the kernel extra package if you have one for your kernel version</p>
+<strong>6.</strong>  Install the kernel extra package if you have one for your kernel version
 <div class="codehilite"><pre><span></span>sudo apt install linux-image-extra-$(uname -r)
 </pre></div>
-
-
-<p><strong>7.</strong> Add the appropriate kernel modules to the <code>/etc/modules</code> file to enable VLAN and bond interfaces:</p>
+<strong>7.</strong> Add the appropriate kernel modules to the <code>/etc/modules</code> file to enable VLAN and bond interfaces:
 <div class="codehilite"><pre><span></span>sudo echo &#39;bonding&#39; &gt;&gt; /etc/modules &amp;&amp; sudo  echo &#39;8021q&#39; &gt;&gt; /etc/modules
 </pre></div>
-
-
-<p><strong>8.</strong> Configure Network Time Protocol (NTP) in <code>/etc/chrony/chrony.conf</code> to synchronize with a suitable time source and restart the service:</p>
+<strong>8.</strong> Configure Network Time Protocol (NTP) in <code>/etc/chrony/chrony.conf</code> to synchronize with a suitable time source and restart the service:
 <div class="codehilite"><pre><span></span>sudo systemctl enable chrony
 sudo restart chrony
 </pre></div>
-
-
-<p><strong>9.</strong> Reboot the host to activate the changes and use the new kernel.</p>
+<strong>9.</strong> Reboot the host to activate the changes and use the new kernel.
 <div class="codehilite"><pre><span></span>sudo systemctl reboot
-</pre></div>
-
-
+</pre></div></p>
 <h3 id="configure_the_network_interfaces">Configure The Network  Interfaces.<a class="headerlink" href="#configure_the_network_interfaces" title="Permanent link">&para;</a></h3>
 <p>This section describes how to configure network interfaces of your host so that it can be used in OpenStack Ansible deployment.</p>
 <h4 id="changing_netplan_to_ifupdown">Changing <code>netplan</code> to <code>ifupdown</code><a class="headerlink" href="#changing_netplan_to_ifupdown" title="Permanent link">&para;</a></h4>
@@ -1075,8 +1057,7 @@ sudo restart chrony
 <div class="codehilite"><pre><span></span>cat /etc/netplan/01-netcfg.yaml
 </pre></div>
 
-
-<p>You will get an output like below.</p>
+<p>You will get an output like below.
 <div class="codehilite"><pre><span></span># This file describes the network interfaces available on your system
 # For more information, see netplan(5).
 network:
@@ -1086,63 +1067,43 @@ network:
     enp0s3:
       dhcp4: yes
 </pre></div>
-
-
-<p>To re-enable <code>ifupdown</code> on this system, run:</p>
+To re-enable <code>ifupdown</code> on this system, run:
 <div class="codehilite"><pre><span></span>sudo apt install ifupdown
-</pre></div>
-
-
+</pre></div></p>
 <h4 id="consistent_naming_for_network_interfaces">Consistent Naming for Network Interfaces<a class="headerlink" href="#consistent_naming_for_network_interfaces" title="Permanent link">&para;</a></h4>
 <p>New versions of Linux Kernel, including the one in our Ubuntu server name the network interfaces using a new convention based on the network interface type (PCI, PCIe, Onboard, Wireless, etc.,) and the relative position of the motherboard which we have slotted the specific card. For example, you may get interface names like <code>enp0s3, eno1, p2p1</code> etc. While this is an advantageous in many cases as it provides consist ant name of each interface during our OpenStack-Ansible deployment we are going to rename them back to our traditional naming convention <code>eth0, eth1</code>, and so on.</p>
 <p>To get back to <code>ethX</code> again will do the following configurations</p>
-<div class="codehilite"><pre><span></span>sudo nano /etc/default/grub
+<p><div class="codehilite"><pre><span></span>sudo nano /etc/default/grub
 </pre></div>
-
-
-<p>Look for <code>GRUB_CMDLINE_LINUX</code>  and add the following <code>net.ifnames=0 biosdevname=0</code>.</p>
-<p><strong>From:</strong></p>
+Look for <code>GRUB_CMDLINE_LINUX</code>  and add the following <code>net.ifnames=0 biosdevname=0</code>.</p>
+<p><strong>From:</strong>
 <div class="codehilite"><pre><span></span>GRUB_CMDLINE_LINUX=&quot;&quot;
 </pre></div>
-
-
-<p><strong>To:</strong></p>
-<div class="codehilite"><pre><span></span>GRUB_CMDLINE_LINUX=&quot;net.ifnames=0 biosdevname=0&quot;
+<strong>To:</strong></p>
+<p><div class="codehilite"><pre><span></span>GRUB_CMDLINE_LINUX=&quot;net.ifnames=0 biosdevname=0&quot;
 </pre></div>
-
-
-<p>Generate a new grub file using the following command.</p>
+Generate a new grub file using the following command.
 <div class="codehilite"><pre><span></span>sudo grub-mkconfig -o /boot/grub/grub.cfg
 </pre></div>
-
-
-<p>Now reboot your systems</p>
-<div class="codehilite"><pre><span></span>sudo systemctl reboot
+Now reboot your systems</p>
+<p><div class="codehilite"><pre><span></span>sudo systemctl reboot
 </pre></div>
-
-
-<p>Now check your interface name:</p>
+Now check your interface name:
 <div class="codehilite"><pre><span></span>ip link show
 </pre></div>
-
-
-<p>You should get an output like below:</p>
-<div class="codehilite"><pre><span></span>1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
-    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc fq_codel state UP mode DEFAULT group default qlen 1000
-    link/ether 08:00:27:cb:31:f1 brd ff:ff:ff:ff:ff:ff
-3: eth1: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc fq_codel state UP mode DEFAULT group default qlen 1000
-    link/ether 08:00:27:b4:05:38 brd ff:ff:ff:ff:ff:ff
-</pre></div>
-
-
+You should get an output like below:
+<div class="codehilite"><pre><span></span><span class="mi">1</span><span class="o">:</span> <span class="n">lo</span><span class="o">:</span> <span class="o">&lt;</span><span class="n">LOOPBACK</span><span class="o">,</span><span class="n">UP</span><span class="o">,</span><span class="n">LOWER_UP</span><span class="o">&gt;</span> <span class="n">mtu</span> <span class="mi">65536</span> <span class="n">qdisc</span> <span class="n">noqueue</span> <span class="n">state</span> <span class="n">UNKNOWN</span> <span class="n">mode</span> <span class="n">DEFAULT</span> <span class="n">group</span> <span class="k">default</span> <span class="n">qlen</span> <span class="mi">1000</span>
+    <span class="n">link</span><span class="o">/</span><span class="n">loopback</span> <span class="mi">00</span><span class="o">:</span><span class="mi">00</span><span class="o">:</span><span class="mi">00</span><span class="o">:</span><span class="mi">00</span><span class="o">:</span><span class="mi">00</span><span class="o">:</span><span class="mi">00</span> <span class="n">brd</span> <span class="mi">00</span><span class="o">:</span><span class="mi">00</span><span class="o">:</span><span class="mi">00</span><span class="o">:</span><span class="mi">00</span><span class="o">:</span><span class="mi">00</span><span class="o">:</span><span class="mi">00</span>
+<span class="mi">2</span><span class="o">:</span> <span class="n">eth0</span><span class="o">:</span> <span class="o">&lt;</span><span class="n">BROADCAST</span><span class="o">,</span><span class="n">MULTICAST</span><span class="o">,</span><span class="n">UP</span><span class="o">,</span><span class="n">LOWER_UP</span><span class="o">&gt;</span> <span class="n">mtu</span> <span class="mi">1500</span> <span class="n">qdisc</span> <span class="n">fq_codel</span> <span class="n">state</span> <span class="n">UP</span> <span class="n">mode</span> <span class="n">DEFAULT</span> <span class="n">group</span> <span class="k">default</span> <span class="n">qlen</span> <span class="mi">1000</span>
+    <span class="n">link</span><span class="o">/</span><span class="n">ether</span> <span class="mi">08</span><span class="o">:</span><span class="mi">00</span><span class="o">:</span><span class="mi">27</span><span class="o">:</span><span class="n">cb</span><span class="o">:</span><span class="mi">31</span><span class="o">:</span><span class="n">f1</span> <span class="n">brd</span> <span class="n">ff</span><span class="o">:</span><span class="n">ff</span><span class="o">:</span><span class="n">ff</span><span class="o">:</span><span class="n">ff</span><span class="o">:</span><span class="n">ff</span><span class="o">:</span><span class="n">ff</span>
+<span class="mi">3</span><span class="o">:</span> <span class="n">eth1</span><span class="o">:</span> <span class="o">&lt;</span><span class="n">BROADCAST</span><span class="o">,</span><span class="n">MULTICAST</span><span class="o">,</span><span class="n">UP</span><span class="o">,</span><span class="n">LOWER_UP</span><span class="o">&gt;</span> <span class="n">mtu</span> <span class="mi">1500</span> <span class="n">qdisc</span> <span class="n">fq_codel</span> <span class="n">state</span> <span class="n">UP</span> <span class="n">mode</span> <span class="n">DEFAULT</span> <span class="n">group</span> <span class="k">default</span> <span class="n">qlen</span> <span class="mi">1000</span>
+    <span class="n">link</span><span class="o">/</span><span class="n">ether</span> <span class="mi">08</span><span class="o">:</span><span class="mi">00</span><span class="o">:</span><span class="mi">27</span><span class="o">:</span><span class="n">b4</span><span class="o">:</span><span class="mi">05</span><span class="o">:</span><span class="mi">38</span> <span class="n">brd</span> <span class="n">ff</span><span class="o">:</span><span class="n">ff</span><span class="o">:</span><span class="n">ff</span><span class="o">:</span><span class="n">ff</span><span class="o">:</span><span class="n">ff</span><span class="o">:</span><span class="n">ff</span>
+</pre></div></p>
 <h4 id="infra1_host_networking">Infra1 Host Networking<a class="headerlink" href="#infra1_host_networking" title="Permanent link">&para;</a></h4>
 <p>According to above network architecture and design you can configure the network interfaces of infra1 host as below.</p>
-<div class="codehilite"><pre><span></span>sudo nano /etc/network/interfaces
+<p><div class="codehilite"><pre><span></span>sudo nano /etc/network/interfaces
 </pre></div>
-
-
-<p>Add the the following configurations.</p>
+Add the the following configurations.</p>
 <div class="codehilite"><pre><span></span># Physical interfaces
 auto eth0
 iface eth0 inet manual
@@ -1237,20 +1198,15 @@ iface br-storage inet static
     netmask 255.255.252.0
 </pre></div>
 
-
-<p>Reboot the system</p>
+<p>Reboot the system
 <div class="codehilite"><pre><span></span>sudo systemctl reboot
-</pre></div>
-
-
+</pre></div></p>
 <h4 id="compute1_host_networking">Compute1 Host Networking<a class="headerlink" href="#compute1_host_networking" title="Permanent link">&para;</a></h4>
 <p>According to above network architecture and design you can configure the network interfaces of Compute1 host as below.</p>
-<div class="codehilite"><pre><span></span>sudo nano /etc/network/interfaces
+<p><div class="codehilite"><pre><span></span>sudo nano /etc/network/interfaces
 </pre></div>
-
-
-<p>Add the the following configurations.</p>
-<div class="codehilite"><pre><span></span># Physical interfaces
+Add the the following configurations.</p>
+<p><div class="codehilite"><pre><span></span># Physical interfaces
 auto eth0
 iface eth0 inet manual
 
@@ -1349,20 +1305,15 @@ iface br-storage inet static
     address 172.29.244.12
     netmask 255.255.252.0
 </pre></div>
-
-
-<p>Reboot the system</p>
+Reboot the system</p>
 <div class="codehilite"><pre><span></span>sudo systemctl reboot
 </pre></div>
 
-
 <h4 id="storage1_host_networking">Storage1 Host Networking<a class="headerlink" href="#storage1_host_networking" title="Permanent link">&para;</a></h4>
 <p>According to above network architecture and design you can configure the network interfaces of Host1 host as below.</p>
-<div class="codehilite"><pre><span></span>sudo nano /etc/network/interfaces
+<p><div class="codehilite"><pre><span></span>sudo nano /etc/network/interfaces
 </pre></div>
-
-
-<p>Add the the following configurations.</p>
+Add the the following configurations.</p>
 <div class="codehilite"><pre><span></span># Physical interfaces
 auto eth0
 iface eth0 inet manual
@@ -1408,22 +1359,18 @@ iface br-storage inet static
     netmask 255.255.252.0
 </pre></div>
 
-
 <p>Reboot the system</p>
 <div class="codehilite"><pre><span></span>sudo systemctl reboot
 </pre></div>
-
 
 <h3 id="configure_ssh_keys">Configure SSH keys<a class="headerlink" href="#configure_ssh_keys" title="Permanent link">&para;</a></h3>
 <p>Ansible uses SSH to connect the deployment host and target hosts.</p>
 <p>In this test environment we use <code>infra1</code> host as  our <code>OpenStack-ansible</code> host we will create a <code>ssh</code> key pair as the root user and propagate the public key of the root user to <code>compute1</code> and <code>storage1</code> hosts.</p>
 <p><strong>1.</strong> 'Run the following command as <code>root</code> user in <code>infra1</code> host</p>
-<div class="codehilite"><pre><span></span>sudo su -
+<p><div class="codehilite"><pre><span></span>sudo su -
 ssh-keygen -t rsa
 </pre></div>
-
-
-<p>Press <code>Enter</code> key to create our keys without a passphrase</p>
+Press <code>Enter</code> key to create our keys without a passphrase</p>
 <p>You will get an output like below.</p>
 <div class="codehilite"><pre><span></span>OpenStack-Ansible automatically configures LVM on the nodes, and overrides any existing LVM configuration. If you had a customized LVM configuration, edit the generated configuration file as needed.
 
@@ -1451,24 +1398,19 @@ The key&#39;s randomart image is:
 +----[SHA256]-----+
 </pre></div>
 
-
-<p><strong>2.</strong> Copy the keys to compute1 and storage1 hosts.</p>
+<p><strong>2.</strong> Copy the keys to compute1 and storage1 hosts.
 <div class="codehilite"><pre><span></span>ssh-copy-id root@compute1
 ssh-copy-id root@storage1
-</pre></div>
-
-
+</pre></div></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>We assume that  you have configured your DNS or at least <code>/etc/hosts</code> file to resolve hostnames</p>
 </div>
-<p><strong>3.</strong> Test it</p>
+<p><strong>3.</strong> Test it
 <div class="codehilite"><pre><span></span>ssh root@compute1
 ssh root@Storage1
 </pre></div>
-
-
-<p>If you can connect and get the shell without authenticating, it is working. SSH provides a shell without asking for a password.</p>
+If you can connect and get the shell without authenticating, it is working. SSH provides a shell without asking for a password.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>OpenStack-Ansible automatically configures LVM on the nodes, and overrides any existing LVM configuration. If you had a customized LVM configuration, edit the generated configuration file as needed.</p>
@@ -1483,61 +1425,25 @@ ssh root@Storage1
 <p class="admonition-title">Note</p>
 <p>OpenStack-Ansible automatically configures LVM on the nodes, and overrides any existing LVM configuration. If you had a customized LVM configuration, edit the generated configuration file as needed.</p>
 </div>
-<p>1. To use the optional Block Storage (cinder) service, create an LVM volume group named <code>cinder-volumes</code> on the storage host. Specify a metadata size of <code>2048</code> when creating the physical volume. For example:</p>
+<p>1. To use the optional Block Storage (cinder) service, create an LVM volume group named <code>cinder-volumes</code> on the storage host. Specify a metadata size of <code>2048</code> when creating the physical volume. For example:
 <div class="codehilite"><pre><span></span>sudo pvcreate --metadatasize 2048  physical_volume_device_path (/dev/sda5)
 sudo  vgcreate cinder-volumes physical_volume_device_path (/dev/sda5)
 </pre></div>
-
-
-<p>2. Optionally, create an LVM volume group named <code>lxc</code> for container file systems if you want to use <code>LXC</code> with <code>LVM</code>. If the <code>lxc</code> volume group does not exist, containers are automatically installed on the file system under <code>/var/lib/lxc</code> by default.</p>
+2. Optionally, create an LVM volume group named <code>lxc</code> for container file systems if you want to use <code>LXC</code> with <code>LVM</code>. If the <code>lxc</code> volume group does not exist, containers are automatically installed on the file system under <code>/var/lib/lxc</code> by default.</p>
 <h4 id="setup_dns_resolver">Setup DNS Resolver<a class="headerlink" href="#setup_dns_resolver" title="Permanent link">&para;</a></h4>
 <p>Ubuntu 18.04 systems make a symlink to <code>`/etc/resolv.conf</code> with <code>../run/systemd/resolve/stub-resolv.conf</code> by default.</p>
-<p>1. Remove symlink</p>
+<p>1. Remove symlink
 <div class="codehilite"><pre><span></span>sudo rm -f /etc/resolv.conf
 </pre></div>
-
-
-<ol>
-<li>Create the Resolver</li>
-</ol>
+2. Create the Resolver
 <div class="codehilite"><pre><span></span>sudo echo &quot;nameserv*er 8.8.8.8&quot; &gt; /etc/resolv.conf
 </pre></div>
-
-
-<p>3. Test it</p>
+3. Test it
 <div class="codehilite"><pre><span></span>ping -c4 google.command
 </pre></div>
-
-
-<p>4. Carry out above in all openstack hosts.</p>
+4. Carry out above in all openstack hosts.</p>
 <h3 id="setup_nat_gateway">Setup NAT Gateway.<a class="headerlink" href="#setup_nat_gateway" title="Permanent link">&para;</a></h3>
 <p>In our test environment setup <code>infra1</code> host will be used as the Ansible host and it will also act as the gateway for OpenStack Ansible lxc lxc_containers. Let's to the following configurations to get this done.</p>
-<p>1. Enable IP Forwarding</p>
-<div class="codehilite"><pre><span></span>sudo echo &quot;net.ipv4.ip_forward=1&quot; &gt;&gt; /etc/sysctl.conf
-</pre></div>
-
-
-<p>2. Update without rebooting</p>
-<div class="codehilite"><pre><span></span>sudo sysctl -p
-</pre></div>
-
-
-<p>3. Create a Masquerading rule to enable SNAT</p>
-<div class="codehilite"><pre><span></span>sudo iptables -t nat -A POSTROUTING -j MASQUERADE
-</pre></div>
-
-
-<p>4. Save your rules</p>
-<div class="codehilite"><pre><span></span>sudo mkdir -p /etc/iptables
-sudo sudo iptables-save &gt; /etc/iptables/rules.v4
-</pre></div>
-
-
-<p>5. You can automate the restore process at reboot by installing an additional package for <code>iptables</code> which takes over the loading of the saved rules. To do this install the following command.</p>
-<div class="codehilite"><pre><span></span>sudo apt-get install iptables-persistent
-</pre></div>
-
-
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>After the installation the initial setup will ask to save the current rules for <code>IPv4</code> and <code>IPv6</code>, just select <code>Yes</code> and press <code>enter</code> for both.</p>

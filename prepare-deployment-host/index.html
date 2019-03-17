@@ -584,14 +584,11 @@
 <h4 id="configure_the_network_interfaces">Configure The Network  Interfaces.<a class="headerlink" href="#configure_the_network_interfaces" title="Permanent link">&para;</a></h4>
 <p>We assume that your OpenStack Ansible host has two network interface cards. We are planning our network like below</p>
 <p><strong>1.</strong> Configure one network card for accessing the Internet</p>
-<div class="codehilite"><pre><span></span>Network: 192.168.10.0/24
+<p><div class="codehilite"><pre><span></span><span class="n">Network</span><span class="o">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">10.0</span><span class="o">/</span><span class="mi">24</span>
 </pre></div>
-
-
-<p><strong>2.</strong> Configure the other network card for accessing our OpenStack deployment management network.</p>
-<div class="codehilite"><pre><span></span>Network: 172.29.236.0/24
+<strong>2.</strong> Configure the other network card for accessing our OpenStack deployment management network.</p>
+<div class="codehilite"><pre><span></span><span class="n">Network</span><span class="o">:</span> <span class="mf">172.29</span><span class="o">.</span><span class="mf">236.0</span><span class="o">/</span><span class="mi">24</span>
 </pre></div>
-
 
 <h5 id="changing_netplan_to_ifupdown">Changing <code>netplan</code> to <code>ifupdown</code><a class="headerlink" href="#changing_netplan_to_ifupdown" title="Permanent link">&para;</a></h5>
 <p>The classic <code>ifupdown</code> network configuration used in Debian/Ubuntu  has been replaced by <code>netplan</code> on Ubuntu 18.04 server system.</p>
@@ -599,8 +596,7 @@
 <div class="codehilite"><pre><span></span>cat /etc/netplan/01-netcfg.yaml
 </pre></div>
 
-
-<p>You will get an output like below.</p>
+<p>You will get an output like below.
 <div class="codehilite"><pre><span></span># This file describes the network interfaces available on your system
 # For more information, see netplan(5).
 network:
@@ -610,56 +606,38 @@ network:
     enp0s3:
       dhcp4: yes
 </pre></div>
-
-
-<p>To re-enable <code>ifupdown</code> on this system, run:</p>
+To re-enable <code>ifupdown</code> on this system, run:
 <div class="codehilite"><pre><span></span>sudo apt install ifupdown
-</pre></div>
-
-
+</pre></div></p>
 <h5 id="consistent_naming_for_network_interfaces">Consistent Naming for Network Interfaces<a class="headerlink" href="#consistent_naming_for_network_interfaces" title="Permanent link">&para;</a></h5>
 <p>New versions of Linux Kernel, including the one in our Ubuntu server name the network interfaces using a new convention based on the network interface type (PCI, PCIe, Onboard, Wireless, etc.,) and the relative position of the motherboard which we have slotted the specific card. For example, you may get interface names like <code>enp0s3, eno1, p2p1</code> etc. While this is an advantageous in many cases as it provides consist ant name of each interface during our OpenStack-Ansible deployment we are going to rename them back to our traditional naming convention <code>eth0, eth1</code>, and so on.</p>
 <p>To get back to <code>ethX</code> again will do the following configurations</p>
-<div class="codehilite"><pre><span></span>sudo nano /etc/default/grub
+<p><div class="codehilite"><pre><span></span>sudo nano /etc/default/grub
 </pre></div>
-
-
-<p>Look for <code>GRUB_CMDLINE_LINUX</code>  and add the following <code>net.ifnames=0 biosdevname=0</code>.</p>
-<p><strong>From:</strong></p>
+Look for <code>GRUB_CMDLINE_LINUX</code>  and add the following <code>net.ifnames=0 biosdevname=0</code>.</p>
+<p><strong>From:</strong>
 <div class="codehilite"><pre><span></span>GRUB_CMDLINE_LINUX=&quot;&quot;
 </pre></div>
-
-
-<p><strong>To:</strong></p>
-<div class="codehilite"><pre><span></span>GRUB_CMDLINE_LINUX=&quot;net.ifnames=0 biosdevname=0&quot;
+<strong>To:</strong></p>
+<p><div class="codehilite"><pre><span></span>GRUB_CMDLINE_LINUX=&quot;net.ifnames=0 biosdevname=0&quot;
 </pre></div>
-
-
-<p>Generate a new grub file using the following command.</p>
+Generate a new grub file using the following command.
 <div class="codehilite"><pre><span></span>sudo grub-mkconfig -o /boot/grub/grub.cfg
 </pre></div>
-
-
-<p>Now reboot your systems</p>
-<div class="codehilite"><pre><span></span>sudo systemctl reboot
+Now reboot your systems</p>
+<p><div class="codehilite"><pre><span></span>sudo systemctl reboot
 </pre></div>
-
-
-<p>Now check your interface name:</p>
+Now check your interface name:
 <div class="codehilite"><pre><span></span>ip link show
 </pre></div>
-
-
-<p>You should get an output like below:</p>
-<div class="codehilite"><pre><span></span>1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
-    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc fq_codel state UP mode DEFAULT group default qlen 1000
-    link/ether 08:00:27:cb:31:f1 brd ff:ff:ff:ff:ff:ff
-3: eth1: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc fq_codel state UP mode DEFAULT group default qlen 1000
-    link/ether 08:00:27:b4:05:38 brd ff:ff:ff:ff:ff:ff
-</pre></div>
-
-
+You should get an output like below:
+<div class="codehilite"><pre><span></span><span class="mi">1</span><span class="o">:</span> <span class="n">lo</span><span class="o">:</span> <span class="o">&lt;</span><span class="n">LOOPBACK</span><span class="o">,</span><span class="n">UP</span><span class="o">,</span><span class="n">LOWER_UP</span><span class="o">&gt;</span> <span class="n">mtu</span> <span class="mi">65536</span> <span class="n">qdisc</span> <span class="n">noqueue</span> <span class="n">state</span> <span class="n">UNKNOWN</span> <span class="n">mode</span> <span class="n">DEFAULT</span> <span class="n">group</span> <span class="k">default</span> <span class="n">qlen</span> <span class="mi">1000</span>
+    <span class="n">link</span><span class="o">/</span><span class="n">loopback</span> <span class="mi">00</span><span class="o">:</span><span class="mi">00</span><span class="o">:</span><span class="mi">00</span><span class="o">:</span><span class="mi">00</span><span class="o">:</span><span class="mi">00</span><span class="o">:</span><span class="mi">00</span> <span class="n">brd</span> <span class="mi">00</span><span class="o">:</span><span class="mi">00</span><span class="o">:</span><span class="mi">00</span><span class="o">:</span><span class="mi">00</span><span class="o">:</span><span class="mi">00</span><span class="o">:</span><span class="mi">00</span>
+<span class="mi">2</span><span class="o">:</span> <span class="n">eth0</span><span class="o">:</span> <span class="o">&lt;</span><span class="n">BROADCAST</span><span class="o">,</span><span class="n">MULTICAST</span><span class="o">,</span><span class="n">UP</span><span class="o">,</span><span class="n">LOWER_UP</span><span class="o">&gt;</span> <span class="n">mtu</span> <span class="mi">1500</span> <span class="n">qdisc</span> <span class="n">fq_codel</span> <span class="n">state</span> <span class="n">UP</span> <span class="n">mode</span> <span class="n">DEFAULT</span> <span class="n">group</span> <span class="k">default</span> <span class="n">qlen</span> <span class="mi">1000</span>
+    <span class="n">link</span><span class="o">/</span><span class="n">ether</span> <span class="mi">08</span><span class="o">:</span><span class="mi">00</span><span class="o">:</span><span class="mi">27</span><span class="o">:</span><span class="n">cb</span><span class="o">:</span><span class="mi">31</span><span class="o">:</span><span class="n">f1</span> <span class="n">brd</span> <span class="n">ff</span><span class="o">:</span><span class="n">ff</span><span class="o">:</span><span class="n">ff</span><span class="o">:</span><span class="n">ff</span><span class="o">:</span><span class="n">ff</span><span class="o">:</span><span class="n">ff</span>
+<span class="mi">3</span><span class="o">:</span> <span class="n">eth1</span><span class="o">:</span> <span class="o">&lt;</span><span class="n">BROADCAST</span><span class="o">,</span><span class="n">MULTICAST</span><span class="o">,</span><span class="n">UP</span><span class="o">,</span><span class="n">LOWER_UP</span><span class="o">&gt;</span> <span class="n">mtu</span> <span class="mi">1500</span> <span class="n">qdisc</span> <span class="n">fq_codel</span> <span class="n">state</span> <span class="n">UP</span> <span class="n">mode</span> <span class="n">DEFAULT</span> <span class="n">group</span> <span class="k">default</span> <span class="n">qlen</span> <span class="mi">1000</span>
+    <span class="n">link</span><span class="o">/</span><span class="n">ether</span> <span class="mi">08</span><span class="o">:</span><span class="mi">00</span><span class="o">:</span><span class="mi">27</span><span class="o">:</span><span class="n">b4</span><span class="o">:</span><span class="mi">05</span><span class="o">:</span><span class="mi">38</span> <span class="n">brd</span> <span class="n">ff</span><span class="o">:</span><span class="n">ff</span><span class="o">:</span><span class="n">ff</span><span class="o">:</span><span class="n">ff</span><span class="o">:</span><span class="n">ff</span><span class="o">:</span><span class="n">ff</span>
+</pre></div></p>
 <h5 id="assigning_ip_addresses">Assigning IP Addresses<a class="headerlink" href="#assigning_ip_addresses" title="Permanent link">&para;</a></h5>
 <p>Use the following sample configuration  your network.</p>
 <div class="codehilite"><pre><span></span>sudo nano /etc/network/interfaces
