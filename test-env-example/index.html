@@ -1433,31 +1433,33 @@ ssh root@Storage1
 <p class="admonition-title">Note</p>
 <p>OpenStack-Ansible automatically configures LVM on the nodes, and overrides any existing LVM configuration. If you had a customized LVM configuration, edit the generated configuration file as needed.</p>
 </div>
-<p><strong>1.</strong> To use the optional Block Storage (cinder) service, create an LVM volume group named <code>cinder-volumes</code> on the storage host. Specify a metadata size of <code>2048</code> when creating the physical volume. For example:</p>
+<p>1. To use the optional Block Storage (cinder) service, create an LVM volume group named <code>cinder-volumes</code> on the storage host. Specify a metadata size of <code>2048</code> when creating the physical volume. For example:</p>
 <div class="codehilite"><pre><span></span>sudo pvcreate --metadatasize 2048  physical_volume_device_path (/dev/sda5)
 sudo  vgcreate cinder-volumes physical_volume_device_path (/dev/sda5)
 </pre></div>
 
 
-<p><strong>2.</strong> Optionally, create an LVM volume group named <code>lxc</code> for container file systems if you want to use <code>LXC</code> with <code>LVM</code>. If the <code>lxc</code> volume group does not exist, containers are automatically installed on the file system under <code>/var/lib/lxc</code> by default.</p>
+<p>2. Optionally, create an LVM volume group named <code>lxc</code> for container file systems if you want to use <code>LXC</code> with <code>LVM</code>. If the <code>lxc</code> volume group does not exist, containers are automatically installed on the file system under <code>/var/lib/lxc</code> by default.</p>
 <h4 id="setup_dns_resolver">Setup DNS Resolver<a class="headerlink" href="#setup_dns_resolver" title="Permanent link">&para;</a></h4>
 <p>Ubuntu 18.04 systems make a symlink to <code>`/etc/resolv.conf</code> with <code>../run/systemd/resolve/stub-resolv.conf</code> by default.</p>
-<p><strong>1.</strong> Remove symlink</p>
+<p>1. Remove symlink</p>
 <div class="codehilite"><pre><span></span>sudo rm -f /etc/resolv.conf
 </pre></div>
 
 
-<p><strong>2.</strong> Create the Resolver</p>
+<ol>
+<li>Create the Resolver</li>
+</ol>
 <div class="codehilite"><pre><span></span>sudo echo &quot;nameserver 8.8.8.8&quot; &gt; /etc/resolv.conf
 </pre></div>
 
 
-<p><strong>3.</strong> Test it</p>
+<p>3. Test it</p>
 <div class="codehilite"><pre><span></span>ping -c4 google.command
 </pre></div>
 
 
-<p><strong>4.</strong> Carry out above in all openstack hosts.</p>
+<p>4. Carry out above in all openstack hosts.</p>
 <h3 id="setup_nat_gateway">Setup NAT Gateway.<a class="headerlink" href="#setup_nat_gateway" title="Permanent link">&para;</a></h3>
 <p>In our test environment setup <code>infra1</code> host will be used as the Ansible host and it will also act as the gateway for OpenStack Ansible lxc lxc_containers. Let's to the following configurations to get this done.</p>
 <p>1. Enable IP Forwarding</p>
@@ -1481,7 +1483,7 @@ sudo sudo iptables-save &gt; /etc/iptables/rules.v4
 </pre></div>
 
 
-<p>5. You can automate the restore process at reboot by installing an additional package for <code>iptables</code> which takes over the loading of the saved rules. To this with the following command</p>
+<p>5. You can automate the restore process at reboot by installing an additional package for <code>iptables</code> which takes over the loading of the saved rules. To do this install the following command.</p>
 <div class="codehilite"><pre><span></span>sudo apt-get install iptables-persistent
 </pre></div>
 
