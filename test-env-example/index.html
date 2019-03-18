@@ -1613,7 +1613,7 @@ global_overrides:
         container_type: &quot;veth&quot;
         container_interface: &quot;eth12&quot;
         host_bind_override: &quot;eth12&quot;
-        type: &quot;flat&quot;
+        typenfo: &quot;flat&quot;
         net_name: &quot;flat&quot;
         group_binds:
           - neutron_linuxbridge_agent
@@ -1717,29 +1717,24 @@ storage_hosts:
 
 </div>
 <h3 id="more_details_on_openstack_user_configyml_yaml_file">More Details on: <code>openstack_user_config.yml</code> YAML file<a class="headerlink" href="#more_details_on_openstack_user_configyml_yaml_file" title="Permanent link">&para;</a></h3>
-<div class="admonition info">
+<div class="admonition note">
 <p class="admonition-title"><code>cidr_networks:</code></p>
 <p><div class="codehilite"><pre><span></span><span class="n">cidr_networks</span><span class="o">:</span>  
   <span class="n">container</span><span class="o">:</span> <span class="mf">172.29</span><span class="o">.</span><span class="mf">236.0</span><span class="o">/</span><span class="mi">22</span>
   <span class="n">tunnel</span><span class="o">:</span> <span class="mf">172.29</span><span class="o">.</span><span class="mf">240.0</span><span class="o">/</span><span class="mi">22</span>
   <span class="n">storage</span><span class="o">:</span> <span class="mf">172.29</span><span class="o">.</span><span class="mf">244.0</span><span class="o">/</span><span class="mi">22</span>
 </pre></div>
-<code>cidr_networks</code> - /22 networks where our containers, tunnel/overlay and storage network will build from. These can be whatever you need as long as they are large enough and correspond to the IPs you configure on your <code>br-mgmt</code> (container), <code>br-vxlan</code> (tunnel/overlay) and <code>br-storage</code> (storage) interfaces on each host.</p>
+These are the networks where our containers, tunnel/overlay and storage network will build from. These can be whatever you need as long as they are large enough and correspond to the IPs you configure on your <code>br-mgmt</code> (container), <code>br-vxlan</code> (tunnel/overlay) and <code>br-storage</code> (storage) interfaces on each host.</p>
 </div>
-<div class="admonition info">
+<div class="admonition note">
 <p class="admonition-title">used_ips:</p>
-<p>```
-used_ips:<br />
-  - "172.29.236.1,172.29.236.255"
-  - "172.29.240.1,172.29.240.255"</p>
+<p><div class="codehilite"><pre><span></span>used_ips:  
+  - &quot;172.29.236.1,172.29.236.255&quot;
+  - &quot;172.29.240.1,172.29.240.255&quot;
+  - &quot;172.29.244.1,172.29.244.255&quot;
+</pre></div>
+Here we define some IPs that we do not want <code>openstack-ansible</code> to use. These IPs are already being used on our hosts, other devices or we just want to reserve these for future expansion. When openstack-ansible creates our containers it automatically assigns them an IP out of the container network. Our internal <code>VIP</code> and physical hosts already have IPs out of these ranges so we put these in used_ips to avoid duplicate IP problems. Out of a /22 network we reserve the first 255 addresses. Based on your network you might need to add more ranges or even single IPs for network gear etc.</p>
 </div>
-<ul>
-<li>
-<ul>
-<li>"172.29.244.1,172.29.244.255"]</li>
-</ul>
-</li>
-</ul>
                 
                   
                 
