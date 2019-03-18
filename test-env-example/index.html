@@ -562,6 +562,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#more_details_on_openstack_user_configyml_yaml_file" title="More Details on: openstack_user_config.yml YAML file" class="md-nav__link">
+    More Details on: openstack_user_config.yml YAML file
+  </a>
+  
+</li>
+      
       
       
       
@@ -869,6 +876,13 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#more_details_on_openstack_user_configyml_yaml_file" title="More Details on: openstack_user_config.yml YAML file" class="md-nav__link">
+    More Details on: openstack_user_config.yml YAML file
+  </a>
   
 </li>
       
@@ -1698,6 +1712,17 @@ storage_hosts:
           volume_backend_name: LVM_iSCSI
           iscsi_ip_address: &quot;172.29.244.13&quot;
 </pre></div>
+
+<h3 id="more_details_on_openstack_user_configyml_yaml_file">More Details on: <code>openstack_user_config.yml</code> YAML file<a class="headerlink" href="#more_details_on_openstack_user_configyml_yaml_file" title="Permanent link">&para;</a></h3>
+<div class="admonition info">
+<p class="admonition-title"><code>cidr_networks:</code></p>
+<p><div class="codehilite"><pre><span></span><span class="n">cidr_networks</span><span class="o">:</span>  
+  <span class="n">container</span><span class="o">:</span> <span class="mf">172.29</span><span class="o">.</span><span class="mf">236.0</span><span class="o">/</span><span class="mi">22</span>
+  <span class="n">tunnel</span><span class="o">:</span> <span class="mf">172.29</span><span class="o">.</span><span class="mf">240.0</span><span class="o">/</span><span class="mi">22</span>
+  <span class="n">storage</span><span class="o">:</span> <span class="mf">172.29</span><span class="o">.</span><span class="mf">244.0</span><span class="o">/</span><span class="mi">22</span>
+</pre></div>
+<code>**cidr_networks**`` - /22 networks where our containers, tunnel/overlay and storage network will build from. These can be whatever you need as long as they are large enough and correspond to the IPs you configure on your</code>br-mgmt<code>(container),</code>br-vxlan<code>(tunnel/overlay) and</code>br-storage` (storage) interfaces on each host.</p>
+</div>
                 
                   
                 
