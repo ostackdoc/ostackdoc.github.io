@@ -1567,6 +1567,8 @@ scripts/bootstrap-ansible.sh
 <h4 id="environment_layout">Environment Layout<a class="headerlink" href="#environment_layout" title="Permanent link">&para;</a></h4>
 <p>The <code>/etc/openstack_deploy/openstack_user_config.yml</code> file defines the environment layout.</p>
 <p>The following configuration describes the layout for this environment.</p>
+<div class="admonition summary">
+<p class="admonition-title"><code>/etc/openstack_deploy/openstack_user_config.yml</code></p>
 <div class="codehilite"><pre><span></span>---
 cidr_networks:
   container: 172.29.236.0/22
@@ -1713,6 +1715,7 @@ storage_hosts:
           iscsi_ip_address: &quot;172.29.244.13&quot;
 </pre></div>
 
+</div>
 <h3 id="more_details_on_openstack_user_configyml_yaml_file">More Details on: <code>openstack_user_config.yml</code> YAML file<a class="headerlink" href="#more_details_on_openstack_user_configyml_yaml_file" title="Permanent link">&para;</a></h3>
 <div class="admonition info">
 <p class="admonition-title"><code>cidr_networks:</code></p>
@@ -1723,6 +1726,20 @@ storage_hosts:
 </pre></div>
 <code>cidr_networks</code> - /22 networks where our containers, tunnel/overlay and storage network will build from. These can be whatever you need as long as they are large enough and correspond to the IPs you configure on your <code>br-mgmt</code> (container), <code>br-vxlan</code> (tunnel/overlay) and <code>br-storage</code> (storage) interfaces on each host.</p>
 </div>
+<div class="admonition info">
+<p class="admonition-title">used_ips:</p>
+<p>```
+used_ips:<br />
+  - "172.29.236.1,172.29.236.255"
+  - "172.29.240.1,172.29.240.255"</p>
+</div>
+<ul>
+<li>
+<ul>
+<li>"172.29.244.1,172.29.244.255"]</li>
+</ul>
+</li>
+</ul>
                 
                   
                 
