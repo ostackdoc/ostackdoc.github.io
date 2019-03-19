@@ -1752,60 +1752,57 @@ Most important are the internal and external VIPs. These will be our <code>OpenS
 </div>
 <div class="admonition note">
 <p class="admonition-title">provider_networks</p>
-<p>```
-provider_networks:
+<div class="codehilite"><pre><span></span>provider_networks:
   - network:
-      container_bridge: "br-mgmt"
-      container_type: "veth"
-      container_interface: "eth1"
-      ip_from_q: "container"
-      type: "raw"
+      container_bridge: &quot;br-mgmt&quot;
+      container_type: &quot;veth&quot;
+      container_interface: &quot;eth1&quot;
+      ip_from_q: &quot;container&quot;
+      type: &quot;raw&quot;
       group_binds:
         - all_containers
         - hosts
       is_container_address: true
   - network:
-      container_bridge: "br-vxlan"
-      container_type: "veth"
-      container_interface: "eth10"
-      ip_from_q: "tunnel"
-      type: "vxlan"
-      range: "1:1000"
-      net_name: "vxlan"
+      container_bridge: &quot;br-vxlan&quot;
+      container_type: &quot;veth&quot;
+      container_interface: &quot;eth10&quot;
+      ip_from_q: &quot;tunnel&quot;
+      type: &quot;vxlan&quot;
+      range: &quot;1:1000&quot;
+      net_name: &quot;vxlan&quot;
       group_binds:
         - neutron_linuxbridge_agent
   - network:
-      container_bridge: "br-vlan"
-      container_type: "veth"
-      container_interface: "eth12"
-      host_bind_override: "eth12"
-      typenfo: "flat"
-      net_name: "flat"
+      container_bridge: &quot;br-vlan&quot;
+      container_type: &quot;veth&quot;
+      container_interface: &quot;eth12&quot;
+      host_bind_override: &quot;eth12&quot;
+      typenfo: &quot;flat&quot;
+      net_name: &quot;flat&quot;
       group_binds:
         - neutron_linuxbridge_agent
   - network:
-      container_bridge: "br-vlan"
-      container_type: "veth"
-      container_interface: "eth11"
-      type: "vlan"
-      range: "101:200,301:400"
-      net_name: "vlan"
+      container_bridge: &quot;br-vlan&quot;
+      container_type: &quot;veth&quot;
+      container_interface: &quot;eth11&quot;
+      type: &quot;vlan&quot;
+      range: &quot;101:200,301:400&quot;
+      net_name: &quot;vlan&quot;
       group_binds:
         - neutron_linuxbridge_agent
   - network:
-      container_bridge: "br-storage"
-      container_type: "veth"
-      container_interface: "eth2"
-      ip_from_q: "storage"
-      type: "raw"
+      container_bridge: &quot;br-storage&quot;
+      container_type: &quot;veth&quot;
+      container_interface: &quot;eth2&quot;
+      ip_from_q: &quot;storage&quot;
+      type: &quot;raw&quot;
       group_binds:
         - glance_api
         - cinder_api
         - cinder_volume
-        - nova_compute</p>
-<div class="codehilite"><pre><span></span>    ```
+        - nova_compute
 </pre></div>
-
 
 </div>
                 
