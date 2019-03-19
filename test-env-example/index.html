@@ -1752,7 +1752,7 @@ Most important are the internal and external VIPs. These will be our <code>OpenS
 </div>
 <div class="admonition note">
 <p class="admonition-title">provider_networks</p>
-<div class="codehilite"><pre><span></span>provider_networks:
+<p><div class="codehilite"><pre><span></span>provider_networks:
   - network:
       container_bridge: &quot;br-mgmt&quot;
       container_type: &quot;veth&quot;
@@ -1803,7 +1803,10 @@ Most important are the internal and external VIPs. These will be our <code>OpenS
         - cinder_volume
         - nova_compute
 </pre></div>
-
+<code>provider_networks</code> - This is where you can modify how you want your <code>OpenStack</code> networking to be implemented. The <code>group_binds</code> correspond to  Ansible groups so it knows which containers need which networks.</p>
+<p>The first network in this section tells <code>openstack-ansible</code> to give an <code>eth1</code> interface to all our LXC containers out of the <code>container</code> network we defined in the <code>cidr_networks</code> section above. This will be attached to our <code>br-mgmt</code> interface on our hosts.</p>
+<p>The second network is for our tenants to use <code>VXLAN</code> networks. It will give our neutron agents container an <code>eth10</code> interface if agents are running inside an <code>lxc</code> container.</p>
+<p>The third network is pretty important and there are a few ways you can set this up. For my use, even though this network is connecting to our br-vlan, I want it to be a flat:flat network. Another way you can do this in a production environment is to use VLANs. Say I wanted 20 tenant VLAN networks, the VLANs my network engineers have given me are 110 through 120 and 440 through 450.</p>
 </div>
                 
                   
