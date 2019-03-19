@@ -1219,9 +1219,8 @@ You should get an output like below:
 <p><div class="codehilite"><pre><span></span>sudo nano /etc/network/interfaces
 </pre></div>
 Add the the following configurations.</p>
-<div class="admonition example">
-<p class="admonition-title">infra1:/etc/network/interfaces</p>
-<div class="codehilite"><pre><span></span># Physical interfaces
+<p>???  Example "infra1:/etc/network/interfaces"
+    <div class="codehilite"><pre><span></span># Physical interfaces
 auto eth0
 iface eth0 inet manual
 
@@ -1315,9 +1314,7 @@ iface br-storage inet static
 
 # End
 </pre></div>
-
-</div>
-<p>Reboot the system
+Reboot the system
 <div class="codehilite"><pre><span></span>sudo systemctl reboot
 </pre></div></p>
 <h4 id="compute1_host_networking">Compute1 Host Networking<a class="headerlink" href="#compute1_host_networking" title="Permanent link">&para;</a></h4>
@@ -1325,9 +1322,8 @@ iface br-storage inet static
 <p><div class="codehilite"><pre><span></span>sudo nano /etc/network/interfaces
 </pre></div>
 Add the the following configurations.</p>
-<div class="admonition example">
-<p class="admonition-title">compute1:/etc/network/interfaces</p>
-<div class="codehilite"><pre><span></span># Physical interfaces
+<p>??? Example "compute1:/etc/network/interfaces"
+    <div class="codehilite"><pre><span></span># Physical interfaces
 auto eth0
 iface eth0 inet manual
 
@@ -1428,9 +1424,7 @@ iface br-storage inet static
 
 # End
 </pre></div>
-
-</div>
-<p>Reboot the system</p>
+Reboot the system</p>
 <div class="codehilite"><pre><span></span>sudo systemctl reboot
 </pre></div>
 
@@ -1439,9 +1433,8 @@ iface br-storage inet static
 <p><div class="codehilite"><pre><span></span>sudo nano /etc/network/interfaces
 </pre></div>
 Add the the following configurations.</p>
-<div class="admonition example">
-<p class="admonition-title">storage1:/etc/network/interfaces</p>
-<div class="codehilite"><pre><span></span># Physical interfaces
+<p>??? Example "storage1:/etc/network/interfaces"
+    <div class="codehilite"><pre><span></span># Physical interfaces
 auto eth0
 iface eth0 inet manual
 
@@ -1487,9 +1480,7 @@ iface br-storage inet static
 
 # End
 </pre></div>
-
-</div>
-<p>Reboot the system</p>
+Reboot the system</p>
 <div class="codehilite"><pre><span></span>sudo systemctl reboot
 </pre></div>
 
@@ -1502,10 +1493,7 @@ ssh-keygen -t rsa
 </pre></div>
 Press <code>Enter</code> key to create our keys without a passphrase</p>
 <p>You will get an output like below.</p>
-<div class="codehilite"><pre><span></span>OpenStack-Ansible automatically configures LVM on the nodes, and overrides any existing LVM configuration. If you had a customized LVM configuration, edit the generated configuration file as needed.
-
-
-root@guru:~# ssh-keygen -t rsa
+<div class="codehilite"><pre><span></span>root@infra1:~# ssh-keygen -t rsa
 Generating public/private rsa key pair.
 Enter file in which to save the key (/root/.ssh/id_rsa):
 Enter passphrase (empty for no passphrase):
