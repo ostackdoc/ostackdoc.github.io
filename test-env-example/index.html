@@ -563,70 +563,23 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" title="```" class="md-nav__link">
-    ```
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#infrastructure" title="Infrastructure" class="md-nav__link">
-    Infrastructure
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#installing_openstack" title="Installing OpenStack" class="md-nav__link">
-    Installing OpenStack
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#galera_memcache_rabbitmq_utility" title="galera, memcache, rabbitmq, utility" class="md-nav__link">
-    galera, memcache, rabbitmq, utility
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#repository_apt_cache_python_packages_etc" title="repository (apt cache, python packages, etc)" class="md-nav__link">
-    repository (apt cache, python packages, etc)
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#more_details_on_openstack_user_configyml_yaml_file" title="More Details on: openstack_user_config.yml YAML file" class="md-nav__link">
     More Details on: openstack_user_config.yml YAML file
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#installing_openstack_1" title="Installing OpenStack" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#installing_openstack" title="Installing OpenStack" class="md-nav__link">
     Installing OpenStack
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#the_demo_tenant" title="The Demo Tenant" class="md-nav__link">
     The Demo Tenant
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -941,70 +894,23 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" title="```" class="md-nav__link">
-    ```
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#infrastructure" title="Infrastructure" class="md-nav__link">
-    Infrastructure
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#installing_openstack" title="Installing OpenStack" class="md-nav__link">
-    Installing OpenStack
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#galera_memcache_rabbitmq_utility" title="galera, memcache, rabbitmq, utility" class="md-nav__link">
-    galera, memcache, rabbitmq, utility
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#repository_apt_cache_python_packages_etc" title="repository (apt cache, python packages, etc)" class="md-nav__link">
-    repository (apt cache, python packages, etc)
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#more_details_on_openstack_user_configyml_yaml_file" title="More Details on: openstack_user_config.yml YAML file" class="md-nav__link">
     More Details on: openstack_user_config.yml YAML file
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#installing_openstack_1" title="Installing OpenStack" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#installing_openstack" title="Installing OpenStack" class="md-nav__link">
     Installing OpenStack
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#the_demo_tenant" title="The Demo Tenant" class="md-nav__link">
     The Demo Tenant
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1691,92 +1597,96 @@ scripts/bootstrap-ansible.sh
 <p>The following configuration describes the layout for this environment.</p>
 <div class="admonition example">
 <p class="admonition-title"><code>/etc/openstack_deploy/openstack_user_config.yml</code></p>
-<h3 id="_1">```<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<p>cidr_networks:
+<div class="codehilite"><pre><span></span>---
+cidr_networks:
   container: 172.29.236.0/22
   tunnel: 172.29.240.0/22
-  storage: 172.29.244.0/22</p>
-<p>used_ips:
-  - "172.29.236.1,172.29.236.50"
-  - "172.29.240.1,172.29.240.50"
-  - "172.29.244.1,172.29.244.50"
-  - "172.29.248.1,172.29.248.50"</p>
-<p>global_overrides:
+  storage: 172.29.244.0/22
+
+used_ips:
+  - &quot;172.29.236.1,172.29.236.50&quot;
+  - &quot;172.29.240.1,172.29.240.50&quot;
+  - &quot;172.29.244.1,172.29.244.50&quot;
+  - &quot;172.29.248.1,172.29.248.50&quot;
+
+global_overrides:
   # The internal and external VIP should be different IPs, however they
   # do not need to be on separate networks.
   # In this configuration osatest.nic.lk should  have an A record
-  # pointing to IP 192.168.10.10</p>
-<p>external_lb_vip_address: osatest.nic.lk
+  # pointing to IP 192.168.10.10
+
+  external_lb_vip_address: osatest.nic.lk
   internal_lb_vip_address: 172.29.236.10
-  management_bridge: "br-mgmt"
+  management_bridge: &quot;br-mgmt&quot;
   provider_networks:
     - network:
-        container_bridge: "br-mgmt"
-        container_type: "veth"
-        container_interface: "eth1"
-        ip_from_q: "container"
-        type: "raw"
+        container_bridge: &quot;br-mgmt&quot;
+        container_type: &quot;veth&quot;
+        container_interface: &quot;eth1&quot;
+        ip_from_q: &quot;container&quot;
+        type: &quot;raw&quot;
         group_binds:
           - all_containers
           - hosts
         is_conInstalling OpenStacktainer_address: true
     - network:
-        container_bridge: "br-vxlan"
-        container_type: "veth"
-        container_interface: "eth10"
-        ip_from_q: "tunnel"
-        type: "vxlan"
-        range: "1:1000"
-        net_name: "vxlan"
+        container_bridge: &quot;br-vxlan&quot;
+        container_type: &quot;veth&quot;
+        container_interface: &quot;eth10&quot;
+        ip_from_q: &quot;tunnel&quot;
+        type: &quot;vxlan&quot;
+        range: &quot;1:1000&quot;
+        net_name: &quot;vxlan&quot;
         group_binds:
           - neutron_linuxbridge_agent
     - network:
-        container_bridge: "br-vlan"
-        container_type: "veth"
-        contaiInstalling OpenStackner_interface: "eth12"
-        host_bind_override: "eth12"
-        typenfo: "flat"
-        net_nInstalling OpenStackame: "flat"
+        container_bridge: &quot;br-vlan&quot;
+        container_type: &quot;veth&quot;
+        contaiInstalling OpenStackner_interface: &quot;eth12&quot;
+        host_bind_override: &quot;eth12&quot;
+        typenfo: &quot;flat&quot;
+        net_nInstalling OpenStackame: &quot;flat&quot;
         group_binds:
           - neutron_linuxbridge_agent
     - network:
-        container_bridge: "br-vlan"
-        container_type: "veth"
-        container_interface: "eth11"
-        type:Installing OpenStack "vlan"
-        range: "101:200,301:400"
-        net_name: "vlan"
+        container_bridge: &quot;br-vlan&quot;
+        container_type: &quot;veth&quot;
+        container_interface: &quot;eth11&quot;
+        type:Installing OpenStack &quot;vlan&quot;
+        range: &quot;101:200,301:400&quot;
+        net_name: &quot;vlan&quot;
         group_binds:
           - neutron_linuxbridge_agent
     - network:
-        container_bridge: "br-storage"
-        container_type: "veth"
-        container_interface: "eth2"
-        ip_from_q: "storage"
-        type: "raw"
+        container_bridge: &quot;br-storage&quot;
+        container_type: &quot;veth&quot;
+        container_interface: &quot;eth2&quot;
+        ip_from_q: &quot;storage&quot;
+        type: &quot;raw&quot;
         group_binds:
           - glance_api
           - cinder_api
           - cinder_volume
-          - nova_compute</p>
-<h4 id="_2"><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<h4 id="infrastructure">Infrastructure<a class="headerlink" href="#infrastructure" title="Permanent link">&para;</a></h4>
-<h4 id="installing_openstack">Installing OpenStack<a class="headerlink" href="#installing_openstack" title="Permanent link">&para;</a></h4>
-<h2 id="galera_memcache_rabbitmq_utility">galera, memcache, rabbitmq, utility<a class="headerlink" href="#galera_memcache_rabbitmq_utility" title="Permanent link">&para;</a></h2>
-<p>shared-infra_hosts:
+          - nova_compute
+###
+### Infrastructure
+###Installing OpenStack
+
+# galera, memcache, rabbitmq, utility
+shared-infra_hosts:
   infra1:
-    ip: 172.29.236.11</p>
-<h2 id="repository_apt_cache_python_packages_etc">repository (apt cache, python packages, etc)<a class="headerlink" href="#repository_apt_cache_python_packages_etc" title="Permanent link">&para;</a></h2>
-<p>repo-infra_hosts:
+    ip: 172.29.236.11
+
+# repository (apt cache, python packages, etc)
+repo-infra_hosts:
   infra1:
-    ip: 172.29.236.11</p>
-</div>
-<p>Installing OpenStack
-    # load balancer
-    haproxy_hosts:
-      infra1:
-        ip: 172.29.236.11</p>
-<div class="codehilite"><pre><span></span>###
+    ip: 172.29.236.11
+# Installing OpenStack load balancer
+haproxy_hosts:
+  infra1:
+    ip: 172.29.236.11
+
+###
 ### OpenStack
 ###
 
@@ -1832,10 +1742,11 @@ storage_hosts:
           volume_driver: cinder.volume.drivers.lvm.LVMVolumeDriver
           volume_backend_name: LVM_iSCSI
           iscsi_ip_address: &quot;172.29.244.13&quot;
-```
+
+# End-of-file
 </pre></div>
 
-
+</div>
 <h3 id="more_details_on_openstack_user_configyml_yaml_file">More Details on: <code>openstack_user_config.yml</code> YAML file<a class="headerlink" href="#more_details_on_openstack_user_configyml_yaml_file" title="Permanent link">&para;</a></h3>
 <div class="admonition note">
 <p class="admonition-title"><code>cidr_networks:</code></p>
@@ -1954,7 +1865,7 @@ The last network shown below is our storage network which will be <code>eth2</co
 </pre></div>
 
 </div>
-<h3 id="installing_openstack_1">Installing OpenStack<a class="headerlink" href="#installing_openstack_1" title="Permanent link">&para;</a></h3>
+<h3 id="installing_openstack">Installing OpenStack<a class="headerlink" href="#installing_openstack" title="Permanent link">&para;</a></h3>
 <p>Execute the following commands to deploy OpenStack</p>
 <div class="codehilite"><pre><span></span>sudo su -
 cd /opt/openstack-ansible/playbooks/
