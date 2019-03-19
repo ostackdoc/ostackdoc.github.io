@@ -1220,7 +1220,7 @@ You should get an output like below:
 </pre></div>
 Add the the following configurations.</p>
 <div class="admonition example">
-<p class="admonition-title">/etc/network/interfaces</p>
+<p class="admonition-title">infra1:/etc/network/interfaces</p>
 <div class="codehilite"><pre><span></span># Physical interfaces
 auto eth0
 iface eth0 inet manual
@@ -1325,7 +1325,9 @@ iface br-storage inet static
 <p><div class="codehilite"><pre><span></span>sudo nano /etc/network/interfaces
 </pre></div>
 Add the the following configurations.</p>
-<p><div class="codehilite"><pre><span></span># Physical interfaces
+<div class="admonition example">
+<p class="admonition-title">compute1:/etc/network/interfaces</p>
+<div class="codehilite"><pre><span></span># Physical interfaces
 auto eth0
 iface eth0 inet manual
 
@@ -1423,8 +1425,12 @@ iface br-storage inet static
     bridge_ports eth0.20
     address 172.29.244.12
     netmask 255.255.252.0
+
+# End
 </pre></div>
-Reboot the system</p>
+
+</div>
+<p>Reboot the system</p>
 <div class="codehilite"><pre><span></span>sudo systemctl reboot
 </pre></div>
 
@@ -1433,6 +1439,8 @@ Reboot the system</p>
 <p><div class="codehilite"><pre><span></span>sudo nano /etc/network/interfaces
 </pre></div>
 Add the the following configurations.</p>
+<div class="admonition example">
+<p class="admonition-title">storage1:/etc/network/interfaces</p>
 <div class="codehilite"><pre><span></span># Physical interfaces
 auto eth0
 iface eth0 inet manual
@@ -1476,8 +1484,11 @@ iface br-storage inet static
     bridge_ports eth0.20
     address 172.29.244.13
     netmask 255.255.252.0
+
+# End
 </pre></div>
 
+</div>
 <p>Reboot the system</p>
 <div class="codehilite"><pre><span></span>sudo systemctl reboot
 </pre></div>
