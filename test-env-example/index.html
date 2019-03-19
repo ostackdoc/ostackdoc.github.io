@@ -576,13 +576,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#the_demo_tenant" title="The Demo Tenant" class="md-nav__link">
-    The Demo Tenant
-  </a>
-  
-</li>
-      
       
       
       
@@ -903,13 +896,6 @@
         <li class="md-nav__item">
   <a href="#installing_openstack" title="Installing OpenStack" class="md-nav__link">
     Installing OpenStack
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the_demo_tenant" title="The Demo Tenant" class="md-nav__link">
-    The Demo Tenant
   </a>
   
 </li>
@@ -1727,7 +1713,7 @@ compute-infra_hosts:
 # heat
 orchestration_hosts:
   infra1:
-    ip: 172.29.236.11Installing OpenStack
+    ip: 172.29.236.11
 
 # horizon
 dashboard_hosts:
@@ -1746,7 +1732,7 @@ compute_hosts:
 
 # cinder storage host (LVM-backed)
 storage_hosts:
-  storage1:Installing OpenStack
+  storage1:
     ip: 172.29.236.13
     container_vars:
       cinder_backends:
@@ -1756,6 +1742,10 @@ storage_hosts:
           volume_driver: cinder.volume.drivers.lvm.LVMVolumeDriver
           volume_backend_name: LVM_iSCSI
           iscsi_ip_address: &quot;172.29.244.13&quot;
+
+neutron_plugin_base:  
+  - router
+  - metering
 
 # End-of-file
 </pre></div>
@@ -1881,15 +1871,10 @@ The last network shown below is our storage network which will be <code>eth2</co
 </div>
 <h3 id="installing_openstack">Installing OpenStack<a class="headerlink" href="#installing_openstack" title="Permanent link">&para;</a></h3>
 <p>Execute the following commands to deploy OpenStack</p>
-<div class="codehilite"><pre><span></span>sudo su -
-cd /opt/openstack-ansible/playbooks/
-openstack-ansible setup-hosts.yml
-openstack-ansible haproxy-install.yml
-openstack-ansible setup-infrastructure.yml
-openstack-ansible setup-openstack.yml
-</pre></div>
-
-<h3 id="the_demo_tenant">The Demo Tenant<a class="headerlink" href="#the_demo_tenant" title="Permanent link">&para;</a></h3>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<p>If you are able to get each playbook finished with 0 errors and then you will have a working Openstack installation.</p>
+</div>
                 
                   
                 
