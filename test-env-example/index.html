@@ -1806,7 +1806,7 @@ Most important are the internal and external VIPs. These will be our <code>OpenS
 <code>provider_networks</code> - This is where you can modify how you want your <code>OpenStack</code> networking to be implemented. The <code>group_binds</code> correspond to  Ansible groups so it knows which containers need which networks.</p>
 <p>The first network in this section tells <code>openstack-ansible</code> to give an <code>eth1</code> interface to all our LXC containers out of the <code>container</code> network we defined in the <code>cidr_networks</code> section above. This will be attached to our <code>br-mgmt</code> interface on our hosts.</p>
 <p>The second network is for our tenants to use <code>VXLAN</code> networks. It will give our neutron agents container an <code>eth10</code> interface if agents are running inside an <code>lxc</code> container.</p>
-<p>The third network is <strong>pretty important</strong> and there are a few ways you can set this up. For your use, even though this network is connecting to our <code>br-vlan</code>, you can make it to be a <code>flat:flat</code> network. Another way you can do this in a production environment is to use VLANs. Say If you wanted  200 tenant VLAN networks, the VLANs  that  network engineers have given to you are 101 through 200 and 301 through 400 as per the configuration shown below.
+<p>The third network is <strong>pretty important</strong> and there are a few ways you can set this up. For your use, even though this network is connecting to our <code>br-vlan</code>, you can make it to be a <code>flat:flat</code> network. Another way you can do this in a production environment is to use VLANs. Say If you wanted  200 tenant VLAN networks, the VLANs  that  network engineers have given to you are <code>101 through 200</code> and <code>301 through 400</code> as per the configuration shown below.
 <div class="codehilite"><pre><span></span>- network:
     container_bridge: &quot;br-vlan&quot;
     container_type: &quot;veth&quot;
@@ -1819,7 +1819,21 @@ Most important are the internal and external VIPs. These will be our <code>OpenS
 </pre></div>
 When you create tenant VLAN networks in neutron you can create them like this:
 <div class="codehilite"><pre><span></span>neutron net-create --provider:physical_network=vlan --provider:network_type=vlan --provider:segmentation_id=101 --shared DEV_101_NETWORK
-</pre></div></p>
+</pre></div>
+The last network shown below is our storage network which will be <code>eth2</code> for the containers that require this interface. When doing <code>swift</code> or <code>ceph</code>, you will want to add <code>- swift_proxy</code> or <code>- mons</code> to the list of containers that receive this interface in the <code>group_binds</code> section.</p>
+<div class="codehilite"><pre><span></span>- network:
+    container_bridge: &quot;br-storage&quot;
+    container_type: &quot;veth&quot;
+    container_interface: &quot;eth2&quot;
+    ip_from_q: &quot;storage&quot;
+    type: &quot;raw&quot;
+    group_binds:
+      - glance_api
+      - cinder_api
+      - cinder_volume
+      - nova_compute
+</pre></div>
+
 </div>
                 
                   
