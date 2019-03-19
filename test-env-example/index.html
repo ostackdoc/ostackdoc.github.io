@@ -1219,8 +1219,9 @@ You should get an output like below:
 <p><div class="codehilite"><pre><span></span>sudo nano /etc/network/interfaces
 </pre></div>
 Add the the following configurations.</p>
-<p>???  Example "infra1:/etc/network/interfaces"
-    <div class="codehilite"><pre><span></span># Physical interfaces
+<div class="admonition example">
+<p class="admonition-title">infra1:/etc/network/interfaces</p>
+<div class="codehilite"><pre><span></span># Physical interfaces
 auto eth0
 iface eth0 inet manual
 
@@ -1314,7 +1315,9 @@ iface br-storage inet static
 
 # End
 </pre></div>
-Reboot the system
+
+</div>
+<p>Reboot the system
 <div class="codehilite"><pre><span></span>sudo systemctl reboot
 </pre></div></p>
 <h4 id="compute1_host_networking">Compute1 Host Networking<a class="headerlink" href="#compute1_host_networking" title="Permanent link">&para;</a></h4>
@@ -1322,8 +1325,9 @@ Reboot the system
 <p><div class="codehilite"><pre><span></span>sudo nano /etc/network/interfaces
 </pre></div>
 Add the the following configurations.</p>
-<p>???+ Example "compute1:/etc/network/interfaces"
-    <div class="codehilite"><pre><span></span># Physical interfaces
+<div class="admonition example">
+<p class="admonition-title">compute1:/etc/network/interfaces</p>
+<div class="codehilite"><pre><span></span># Physical interfaces
 auto eth0
 iface eth0 inet manual
 
@@ -1424,7 +1428,9 @@ iface br-storage inet static
 
 # End
 </pre></div>
-Reboot the system</p>
+
+</div>
+<p>Reboot the system</p>
 <div class="codehilite"><pre><span></span>sudo systemctl reboot
 </pre></div>
 
@@ -1433,8 +1439,9 @@ Reboot the system</p>
 <p><div class="codehilite"><pre><span></span>sudo nano /etc/network/interfaces
 </pre></div>
 Add the the following configurations.</p>
-<p>??? Example "storage1:/etc/network/interfaces"
-    <div class="codehilite"><pre><span></span># Physical interfaces
+<div class="admonition example">
+<p class="admonition-title">storage1:/etc/network/interfaces</p>
+<div class="codehilite"><pre><span></span># Physical interfaces
 auto eth0
 iface eth0 inet manual
 
@@ -1480,7 +1487,9 @@ iface br-storage inet static
 
 # End
 </pre></div>
-Reboot the system</p>
+
+</div>
+<p>Reboot the system</p>
 <div class="codehilite"><pre><span></span>sudo systemctl reboot
 </pre></div>
 
