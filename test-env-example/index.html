@@ -1219,7 +1219,9 @@ You should get an output like below:
 <p><div class="codehilite"><pre><span></span>sudo nano /etc/network/interfaces
 </pre></div>
 Add the the following configurations.</p>
-<p><div class="codehilite"><pre><span></span># Physical interfaces
+<div class="admonition example">
+<p class="admonition-title">/etc/network/interfaces</p>
+<div class="codehilite"><pre><span></span># Physical interfaces
 auto eth0
 iface eth0 inet manual
 
@@ -1310,8 +1312,12 @@ iface br-storage inet static
     bridge_ports eth0.20
     address 172.29.244.11
     netmask 255.255.252.0
+
+# End
 </pre></div>
-Reboot the system
+
+</div>
+<p>Reboot the system
 <div class="codehilite"><pre><span></span>sudo systemctl reboot
 </pre></div></p>
 <h4 id="compute1_host_networking">Compute1 Host Networking<a class="headerlink" href="#compute1_host_networking" title="Permanent link">&para;</a></h4>
