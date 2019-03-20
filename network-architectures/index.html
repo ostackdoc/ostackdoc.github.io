@@ -1,81 +1,36 @@
 
+<!DOCTYPE doctype html>
 
-
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      <meta http-equiv="x-ua-compatible" content="ie=edge">
-      
-        <meta name="description" content="Guide for openstack-ansible Deployers">
-      
-      
-        <link rel="canonical" href="https://ostackdoc.github.io/network-architectures/">
-      
-      
-        <meta name="author" content="Chinthaka Deshapriya">
-      
-      
-        <meta name="lang:clipboard.copy" content="Copy to clipboard">
-      
-        <meta name="lang:clipboard.copied" content="Copied to clipboard">
-      
-        <meta name="lang:search.language" content="en">
-      
-        <meta name="lang:search.pipeline.stopwords" content="True">
-      
-        <meta name="lang:search.pipeline.trimmer" content="True">
-      
-        <meta name="lang:search.result.none" content="No matching documents">
-      
-        <meta name="lang:search.result.one" content="1 matching document">
-      
-        <meta name="lang:search.result.other" content="# matching documents">
-      
-        <meta name="lang:search.tokenizer" content="[\s\-]+">
-      
-      <link rel="shortcut icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.0.2">
-    
-    
-      
-        <title>Network Architectures - Openstack Ansible Deployment Guide</title>
-      
-    
-    
-      <link rel="stylesheet" href="../assets/stylesheets/application.982221ab.css">
-      
-        <link rel="stylesheet" href="../assets/stylesheets/application-palette.224b79ff.css">
-      
-      
-        
-        
-        <meta name="theme-color" content="#3f51b5">
-      
-    
-    
-      <script src="../assets/javascripts/modernizr.1f0bcf2b.js"></script>
-    
-    
-      
-        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
-        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
-      
-    
-    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
-    
-      <link rel="manifest" href="../manifest.webmanifest">
-    
-    
-      <link rel="stylesheet" href="../extra.css">
-    
-    
-      
-        
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="ie=edge" http-equiv="x-ua-compatible"/>
+<meta content="Guide for openstack-ansible Deployers" name="description"/>
+<link href="https://ostackdoc.github.io/network-architectures/" rel="canonical"/>
+<meta content="Chinthaka Deshapriya" name="author"/>
+<meta content="Copy to clipboard" name="lang:clipboard.copy"/>
+<meta content="Copied to clipboard" name="lang:clipboard.copied"/>
+<meta content="en" name="lang:search.language"/>
+<meta content="True" name="lang:search.pipeline.stopwords"/>
+<meta content="True" name="lang:search.pipeline.trimmer"/>
+<meta content="No matching documents" name="lang:search.result.none"/>
+<meta content="1 matching document" name="lang:search.result.one"/>
+<meta content="# matching documents" name="lang:search.result.other"/>
+<meta content="[\s\-]+" name="lang:search.tokenizer"/>
+<link href="../assets/images/favicon.png" rel="shortcut icon"/>
+<meta content="mkdocs-1.0.4, mkdocs-material-4.0.2" name="generator"/>
+<title>Network Architectures - Openstack Ansible Deployment Guide</title>
+<link href="../assets/stylesheets/application.982221ab.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/application-palette.224b79ff.css" rel="stylesheet"/>
+<meta content="#3f51b5" name="theme-color"/>
+<script src="../assets/javascripts/modernizr.1f0bcf2b.js"></script>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono" rel="stylesheet"/>
+<style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+<link href="../assets/fonts/material-icons.css" rel="stylesheet"/>
+<link href="../manifest.webmanifest" rel="manifest"/>
+<link href="../extra.css" rel="stylesheet"/>
 <script>
   window.ga = window.ga || function() {
     (ga.q = ga.q || []).push(arguments)
@@ -98,23 +53,13 @@
     }
   })
 </script>
-<script async src="https://www.google-analytics.com/analytics.js"></script>
-      
-    
-    
-  </head>
-  
-    
-    
-    <body dir="ltr" data-md-color-primary="indigo" data-md-color-accent="indigo">
-  
-    <svg class="md-svg">
-      <defs>
-        
-        
-          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
-    viewBox="0 0 416 448" id="__github">
-  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+</head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" dir="ltr">
+<svg class="md-svg">
+<defs>
+<svg height="448" id="__github" viewbox="0 0 416 448" width="416" xmlns="http://www.w3.org/2000/svg">
+<path d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
         8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
         18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
         19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
@@ -128,430 +73,253 @@
         0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
         30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
         46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
-        99.5z" />
+        99.5z" fill="currentColor"></path>
 </svg>
-        
-      </defs>
-    </svg>
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
-    
-      <a href="#management_network" tabindex="1" class="md-skip">
+</defs>
+</svg>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+<a class="md-skip" href="#management_network" tabindex="1">
         Skip to content
       </a>
-    
-    
-      <header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid">
-    <div class="md-flex">
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://ostackdoc.github.io" title="Openstack Ansible Deployment Guide" class="md-header-nav__button md-logo">
-          
-            <i class="md-icon"></i>
-          
-        </a>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
-      </div>
-      <div class="md-flex__cell md-flex__cell--stretch">
-        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          
-            <span class="md-header-nav__topic">
+<header class="md-header" data-md-component="header">
+<nav class="md-header-nav md-grid">
+<div class="md-flex">
+<div class="md-flex__cell md-flex__cell--shrink">
+<a class="md-header-nav__button md-logo" href="https://ostackdoc.github.io" title="Openstack Ansible Deployment Guide">
+<i class="md-icon"></i>
+</a>
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+</div>
+<div class="md-flex__cell md-flex__cell--stretch">
+<div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+<span class="md-header-nav__topic">
               Openstack Ansible Deployment Guide
             </span>
-            <span class="md-header-nav__topic">
+<span class="md-header-nav__topic">
               Network Architectures
             </span>
-          
-        </div>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        
-      </div>
-      
-        <div class="md-flex__cell md-flex__cell--shrink">
-          <div class="md-header-nav__source">
-            
-
-
-  
-
-<a href="https://github.com/ostackdoc/ostackdoc-docs/" title="Go to repository" class="md-source" data-md-source="github">
-  
-    <div class="md-source__icon">
-      <svg viewBox="0 0 24 24" width="24" height="24">
-        <use xlink:href="#__github" width="24" height="24"></use>
-      </svg>
-    </div>
-  
-  <div class="md-source__repository">
+</div>
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<div class="md-header-nav__source">
+<a class="md-source" data-md-source="github" href="https://github.com/ostackdoc/ostackdoc-docs/" title="Go to repository">
+<div class="md-source__icon">
+<svg height="24" viewbox="0 0 24 24" width="24">
+<use height="24" width="24" xlink:href="#__github"></use>
+</svg>
+</div>
+<div class="md-source__repository">
     ostackdoc/ostackdoc-docs
   </div>
 </a>
-          </div>
-        </div>
-      
-    </div>
-  </nav>
+</div>
+</div>
+</div>
+</nav>
 </header>
-    
-    <div class="md-container">
-      
-        
-      
-      
-      <main class="md-main">
-        <div class="md-main__inner md-grid" data-md-component="container">
-          
-            
-              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://ostackdoc.github.io" title="Openstack Ansible Deployment Guide" class="md-nav__button md-logo">
-      
-        <i class="md-icon"></i>
-      
-    </a>
+<div class="md-container">
+<main class="md-main">
+<div class="md-main__inner md-grid" data-md-component="container">
+<div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title md-nav__title--site" for="__drawer">
+<a class="md-nav__button md-logo" href="https://ostackdoc.github.io" title="Openstack Ansible Deployment Guide">
+<i class="md-icon"></i>
+</a>
     Openstack Ansible Deployment Guide
   </label>
-  
-    <div class="md-nav__source">
-      
-
-
-  
-
-<a href="https://github.com/ostackdoc/ostackdoc-docs/" title="Go to repository" class="md-source" data-md-source="github">
-  
-    <div class="md-source__icon">
-      <svg viewBox="0 0 24 24" width="24" height="24">
-        <use xlink:href="#__github" width="24" height="24"></use>
-      </svg>
-    </div>
-  
-  <div class="md-source__repository">
+<div class="md-nav__source">
+<a class="md-source" data-md-source="github" href="https://github.com/ostackdoc/ostackdoc-docs/" title="Go to repository">
+<div class="md-source__icon">
+<svg height="24" viewbox="0 0 24 24" width="24">
+<use height="24" width="24" xlink:href="#__github"></use>
+</svg>
+</div>
+<div class="md-source__repository">
     ostackdoc/ostackdoc-docs
   </div>
 </a>
-    </div>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href=".." title="Introduction" class="md-nav__link">
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href=".." title="Introduction">
       Introduction
     </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../overview/" title="Overview" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../overview/" title="Overview">
       Overview
     </a>
-  </li>
-
-    
-      
-      
-      
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-toggle md-nav__toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
         Network Architectures
       </label>
-    
-    <a href="./" title="Network Architectures" class="md-nav__link md-nav__link--active">
+<a class="md-nav__link md-nav__link--active" href="./" title="Network Architectures">
       Network Architectures
     </a>
-    
-      
 <nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#management_network" title="Management Network" class="md-nav__link">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#management_network" title="Management Network">
     Management Network
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#overlay_network" title="Overlay Network" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#overlay_network" title="Overlay Network">
     Overlay Network
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#storage_network" title="Storage Network" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#storage_network" title="Storage Network">
     Storage Network
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#network_interfaces" title="Network Interfaces" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#network_interfaces" title="Network Interfaces">
     Network Interfaces
   </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#single_interface_or_bond" title="Single Interface or Bond" class="md-nav__link">
+<nav class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#single_interface_or_bond" title="Single Interface or Bond">
     Single Interface or Bond
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#single_bond_sample_network_configuration" title="Single Bond Sample Network Configuration" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#single_bond_sample_network_configuration" title="Single Bond Sample Network Configuration">
     Single Bond Sample Network Configuration
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#multiple_interfaces_or_bonds" title="Multiple Interfaces or Bonds" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#multiple_interfaces_or_bonds" title="Multiple Interfaces or Bonds">
     Multiple Interfaces or Bonds
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#multiples_bond_sample_network_configuration" title="Multiples Bond Sample Network Configuration" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#multiples_bond_sample_network_configuration" title="Multiples Bond Sample Network Configuration">
     Multiples Bond Sample Network Configuration
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
+</ul>
 </nav>
-    
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../prepare-deployment-host/" title="Prepare Deployment Host" class="md-nav__link">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../prepare-deployment-host/" title="Prepare Deployment Host">
       Prepare Deployment Host
     </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../prepare-the-target-hosts/" title="Prepare the Target Hosts" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../prepare-the-target-hosts/" title="Prepare the Target Hosts">
       Prepare the Target Hosts
     </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../test-env-example/" title="Test Environment Example" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../test-env-example/" title="Test Environment Example">
       Test Environment Example
     </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
-    
-    <label class="md-nav__link" for="nav-7">
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" id="nav-7" type="checkbox"/>
+<label class="md-nav__link" for="nav-7">
       Preparing OpenStack Nodes
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-7">
+<nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+<label class="md-nav__title" for="nav-7">
         Preparing OpenStack Nodes
       </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../install-node-os/" title="Installing Node OS" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../install-node-os/" title="Installing Node OS">
       Installing Node OS
     </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../configure-node-network.md" title="Configuring Node Network" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../configure-node-network.md" title="Configuring Node Network">
       Configuring Node Network
     </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-  </ul>
+</li>
+</ul>
 </nav>
-                  </div>
-                </div>
-              </div>
-            
-            
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
 <nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#management_network" title="Management Network" class="md-nav__link">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#management_network" title="Management Network">
     Management Network
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#overlay_network" title="Overlay Network" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#overlay_network" title="Overlay Network">
     Overlay Network
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#storage_network" title="Storage Network" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#storage_network" title="Storage Network">
     Storage Network
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#network_interfaces" title="Network Interfaces" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#network_interfaces" title="Network Interfaces">
     Network Interfaces
   </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#single_interface_or_bond" title="Single Interface or Bond" class="md-nav__link">
+<nav class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#single_interface_or_bond" title="Single Interface or Bond">
     Single Interface or Bond
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#single_bond_sample_network_configuration" title="Single Bond Sample Network Configuration" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#single_bond_sample_network_configuration" title="Single Bond Sample Network Configuration">
     Single Bond Sample Network Configuration
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#multiple_interfaces_or_bonds" title="Multiple Interfaces or Bonds" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#multiple_interfaces_or_bonds" title="Multiple Interfaces or Bonds">
     Multiple Interfaces or Bonds
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#multiples_bond_sample_network_configuration" title="Multiples Bond Sample Network Configuration" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#multiples_bond_sample_network_configuration" title="Multiples Bond Sample Network Configuration">
     Multiples Bond Sample Network Configuration
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
+</ul>
 </nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          <div class="md-content">
-            <article class="md-content__inner md-typeset">
-              
-                
-                  <a href="https://github.com/ostackdoc/ostackdoc-docs/edit/master/docs/network-architectures.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
-                
-                
-                  <h1>Network Architectures</h1>
-                
-                <p>OpenStack-Ansible supports a number of different network architectures, and can be deployed using a single network interface for non-production workloads or using multiple network interfaces or bonded interfaces for production workloads.</p>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content">
+<article class="md-content__inner md-typeset"><a class="md-icon md-content__icon" download href="network-architectures.pdf" title="PDF Export"></a>
+<a class="md-icon md-content__icon" href="https://github.com/ostackdoc/ostackdoc-docs/edit/master/docs/network-architectures.md" title="Edit this page"></a>
+<h1>Network Architectures</h1>
+<p>OpenStack-Ansible supports a number of different network architectures, and can be deployed using a single network interface for non-production workloads or using multiple network interfaces or bonded interfaces for production workloads.</p>
 <p>Our OpenStack-Ansible production environment reference architectures in this guide segments traffic using VLANs across multiple network interfaces or bonds.</p>
 <p>The default networks used in an OpenStack-Ansible in this deployment can be observed in the following table:</p>
 <table>
@@ -584,11 +352,11 @@
 <p class="admonition-title">Note</p>
 <p>Unless, if we specifically do mention about a new network architecture  we will be referring to the same network architecture above through out this document.</p>
 </div>
-<h3 id="management_network">Management Network<a class="headerlink" href="#management_network" title="Permanent link">&para;</a></h3>
+<h3 id="management_network">Management Network<a class="headerlink" href="#management_network" title="Permanent link">¶</a></h3>
 <p>The <code>Management Network</code>, also referred to as the <code>Container network</code>, provides management of and communication between the infrastructure and OpenStack services running in containers or on metal. The management network uses a dedicated <code>VLAN</code> typically connected to the <code>br-mgmt</code> bridge, and may also be used as the primary interface used to interact with the server via <code>SSH</code>.</p>
-<h3 id="overlay_network">Overlay Network<a class="headerlink" href="#overlay_network" title="Permanent link">&para;</a></h3>
+<h3 id="overlay_network">Overlay Network<a class="headerlink" href="#overlay_network" title="Permanent link">¶</a></h3>
 <p>The <code>Overlay Network</code>, also referred to as the <code>Tunnel Network</code>, provides connectivity between hosts for the purpose of <code>tunneling</code> encapsulated traffic using <code>VXLAN</code>, <code>GRE</code>, or other protocols. The <code>Overlay Network</code> uses a dedicated <code>VLAN</code> typically connected to the <code>br-vxlan</code> bridge.</p>
-<h3 id="storage_network">Storage Network<a class="headerlink" href="#storage_network" title="Permanent link">&para;</a></h3>
+<h3 id="storage_network">Storage Network<a class="headerlink" href="#storage_network" title="Permanent link">¶</a></h3>
 <p>The <code>Storage Network</code> provides segregated access to Block Storage from OpenStack services such as <code>Cinder, Glance, Ceph</code>, etc.. The <code>Storage Network</code> uses a dedicated <code>VLAN</code> typically connected to the <code>br-storage</code> bridge.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -600,14 +368,14 @@
 <li>Self-service <code>Project/Tenant</code> networks for instances</li>
 <li>Other OpenStack services</li>
 </ul>
-<h3 id="network_interfaces">Network Interfaces<a class="headerlink" href="#network_interfaces" title="Permanent link">&para;</a></h3>
-<h4 id="single_interface_or_bond">Single Interface or Bond<a class="headerlink" href="#single_interface_or_bond" title="Permanent link">&para;</a></h4>
+<h3 id="network_interfaces">Network Interfaces<a class="headerlink" href="#network_interfaces" title="Permanent link">¶</a></h3>
+<h4 id="single_interface_or_bond">Single Interface or Bond<a class="headerlink" href="#single_interface_or_bond" title="Permanent link">¶</a></h4>
 <p>OpenStack-Ansible supports the use of a <code>single</code> interface or set of <code>bonded</code> interfaces that carry <code>traffic</code> for OpenStack services as well as instances.</p>
 <p>The following diagram demonstrates hosts using a single interface:</p>
-<p><img alt="" src="../img/single-interface.jpg" /></p>
+<p><img alt="" src="../img/single-interface.jpg"/></p>
 <p>The following diagram demonstrates hosts using a single bond:</p>
-<p><img alt="" src="../img/single-bond-interface.jpg" /></p>
-<h4 id="single_bond_sample_network_configuration">Single Bond Sample Network Configuration<a class="headerlink" href="#single_bond_sample_network_configuration" title="Permanent link">&para;</a></h4>
+<p><img alt="" src="../img/single-bond-interface.jpg"/></p>
+<h4 id="single_bond_sample_network_configuration">Single Bond Sample Network Configuration<a class="headerlink" href="#single_bond_sample_network_configuration" title="Permanent link">¶</a></h4>
 <p>Each host will require the correct network bridges to be implemented.</p>
 <p>The following is the <code>/etc/network/interfaces</code> file for <code>infra1</code> control plane host using a single bond in a Ubuntu host.</p>
 <div class="admonition note">
@@ -636,7 +404,7 @@ iface eth2 inet manual
 auto eth3
 iface eth3 inet manual
 
-# Create a bonded interface. Note that the &quot;bond-slaves&quot; is set to none. This
+# Create a bonded interface. Note that the "bond-slaves" is set to none. This
 # is because the bond-master has already been set in the raw interfaces for
 # the new bond0.
 
@@ -695,9 +463,9 @@ iface br-vxlan inet static
 
 # OpenStack Networking VLAN bridge
 #
-# The &quot;br-vlan&quot; bridge is no longer necessary for deployments unless Neutron
+# The "br-vlan" bridge is no longer necessary for deployments unless Neutron
 # agents are deployed in a container. Instead, a direct interface such as
-# bond0 can be specified via the &quot;host_bind_override&quot; override when defining
+# bond0 can be specified via the "host_bind_override" override when defining
 # provider networks.
 #
 #auto br-vlan
@@ -738,14 +506,13 @@ iface br-storage inet manual
 #    address 172.29.244.16
 #    netmask 255.255.252.0
 </pre></div>
-
-<h4 id="multiple_interfaces_or_bonds">Multiple Interfaces or Bonds<a class="headerlink" href="#multiple_interfaces_or_bonds" title="Permanent link">&para;</a></h4>
+<h4 id="multiple_interfaces_or_bonds">Multiple Interfaces or Bonds<a class="headerlink" href="#multiple_interfaces_or_bonds" title="Permanent link">¶</a></h4>
 <p>OpenStack-Ansible supports the use of a multiple interfaces or sets of bonded interfaces that carry traffic for OpenStack services and instances.</p>
 <p>The following diagram demonstrates hosts using multiple interfaces:</p>
-<p><img alt="" src="../img/multiple-interfaces.jpg" /></p>
+<p><img alt="" src="../img/multiple-interfaces.jpg"/></p>
 <p>The following diagram demonstrates hosts using multiple bonds:</p>
-<p><img alt="" src="../img/multiple-interfaces.jpg" /></p>
-<h4 id="multiples_bond_sample_network_configuration">Multiples Bond Sample Network Configuration<a class="headerlink" href="#multiples_bond_sample_network_configuration" title="Permanent link">&para;</a></h4>
+<p><img alt="" src="../img/multiple-interfaces.jpg"/></p>
+<h4 id="multiples_bond_sample_network_configuration">Multiples Bond Sample Network Configuration<a class="headerlink" href="#multiples_bond_sample_network_configuration" title="Permanent link">¶</a></h4>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If your environment does not have <code>eth0</code>, but instead has <code>p1p1</code> or some other interface name, ensure that all references to eth0 in all configuration files are replaced with the appropriate name. The same applies to additional network interfaces.</p>
@@ -774,7 +541,7 @@ auto eth3
 iface eth3 inet manual
     bond-master bond1
 
-# Create a bonded interface. Note that the &quot;bond-slaves&quot; is set to none. This
+# Create a bonded interface. Note that the "bond-slaves" is set to none. This
 # is because the bond-master has already been set in the raw interfaces for
 # the new bond0.
 auto bond0
@@ -839,9 +606,9 @@ iface br-vxlan inet static
 
 # OpenStack Networking VLAN bridge
 #
-# The &quot;br-vlan&quot; bridge is no longer necessary for deployments unless Neutron
+# The "br-vlan" bridge is no longer necessary for deployments unless Neutron
 # agents are deployed in a container. Instead, a direct interface such as
-# bond1 can be specified via the &quot;host_bind_override&quot; override when defining
+# bond1 can be specified via the "host_bind_override" override when defining
 # provider networks.
 #
 #auto br-vlan
@@ -883,64 +650,46 @@ iface br-storage inet manual
 #    address 172.29.244.16
 #    netmask 255.255.252.0
 </pre></div>
-                
-                  
-                
-              
-              
-                
-
-
-              
-            </article>
-          </div>
-        </div>
-      </main>
-      
-        
+</article>
+</div>
+</div>
+</main>
 <footer class="md-footer">
-  
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
-        
-          <a href="../overview/" title="Overview" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
-            </div>
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
+<div class="md-footer-nav">
+<nav class="md-footer-nav__inner md-grid">
+<a class="md-flex md-footer-nav__link md-footer-nav__link--prev" href="../overview/" rel="prev" title="Overview">
+<div class="md-flex__cell md-flex__cell--shrink">
+<i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+</div>
+<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+<span class="md-flex__ellipsis">
+<span class="md-footer-nav__direction">
                   Previous
                 </span>
                 Overview
               </span>
-            </div>
-          </a>
-        
-        
-          <a href="../prepare-deployment-host/" title="Prepare Deployment Host" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
+</div>
+</a>
+<a class="md-flex md-footer-nav__link md-footer-nav__link--next" href="../prepare-deployment-host/" rel="next" title="Prepare Deployment Host">
+<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+<span class="md-flex__ellipsis">
+<span class="md-footer-nav__direction">
                   Next
                 </span>
                 Prepare Deployment Host
               </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
-          </a>
-        
-      </nav>
-    </div>
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-          <div class="md-footer-copyright__highlight">
-            Copyright &copy; 2018 - 2019 Chinthaka Deshapriya
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+</div>
+</a>
+</nav>
+</div>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
+<div class="md-footer-copyright__highlight">
+            Copyright © 2018 - 2019 Chinthaka Deshapriya
           </div>
         
         powered by
@@ -948,29 +697,18 @@ iface br-storage inet manual
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
           Material for MkDocs</a>
-      </div>
-      
-  <div class="md-footer-social">
-    <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
-    
-      <a href="https://github.com/ostackdoc" class="md-footer-social__link fa fa-github"></a>
-    
-      <a href="https://twitter.com/ostackdoc" class="md-footer-social__link fa fa-twitter"></a>
-    
-      <a href="https://linkedin.com/in/ostackdoc" class="md-footer-social__link fa fa-linkedin"></a>
-    
-  </div>
-
-    </div>
-  </div>
+</div>
+<div class="md-footer-social">
+<link href="../assets/fonts/font-awesome.css" rel="stylesheet"/>
+<a class="md-footer-social__link fa fa-github" href="https://github.com/ostackdoc"></a>
+<a class="md-footer-social__link fa fa-twitter" href="https://twitter.com/ostackdoc"></a>
+<a class="md-footer-social__link fa fa-linkedin" href="https://linkedin.com/in/ostackdoc"></a>
+</div>
+</div>
+</div>
 </footer>
-      
-    </div>
-    
-      <script src="../assets/javascripts/application.d9aa80ab.js"></script>
-      
-      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
-      
-    
-  </body>
+</div>
+<script src="../assets/javascripts/application.d9aa80ab.js"></script>
+<script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+</body>
 </html>
